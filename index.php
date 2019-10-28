@@ -8,8 +8,13 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Daryle: Test3</title>
-        <title>Daryle02: Test1</title>
         <title>Daryle0: Test4</title>
+
+
+
+        <title>Daryle02: Test2</title>
+        <title>Daryle02: Test3</title>
+
     </head>
     
     <body>
