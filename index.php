@@ -8,6 +8,10 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Daryle: Test3</title>
+
+
+
+        <title>Daryle02: Test1</title>
     </head>
     <body>
         <?php
