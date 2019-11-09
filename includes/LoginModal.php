@@ -38,7 +38,7 @@
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
        
-        <a href="#about" onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button ">Login |</button></a><a href="./guestAuth.php" class="w3-bar-item w3-button"><b>Continue as Guest</button></b></a>
+        <a href="#about" onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button ">Login |</button></a><a href="./guestpage.php" class="w3-bar-item w3-button"><b>Continue as Guest</button></b></a>
 <div class="w3-container">
   <div id="id01" class="w3-modal">
     <div class="w3-modal-content">
