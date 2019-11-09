@@ -1,0 +1,22 @@
+
+**** do not cut or delete **** use this for AWS access
+
+username=logisTix15
+password=LogisTix$$7982
+host=database-1.c67slboh2l8h.us-east-1.rds.amazonaws.com
+port =3306
+db=logistix
+
+
+**** do not cut or delete **** use for localhost
+
+username=495dev@@
+password=495DEV@@2019
+host=localhost
+db=495test
+
+
+username=logistixdbadmin
+password=LogisTix!@#495
+host=localhost
+db=logistix

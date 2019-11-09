@@ -1,0 +1,4 @@
+username=logistixdbadmin
+password=LogisTix!@#495
+host=localhost
+db=logistix
