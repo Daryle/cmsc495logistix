@@ -21,6 +21,7 @@ require_once ('inlcudes/process.php');
 <link rel="stylesheet" href="includes/style.css">
 <link rel="stylesheet" href="css/style2.css">
 <link rel="stylesheet" href="css/style.css">
+
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>

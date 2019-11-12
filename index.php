@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, min-width=800, initial-scale=1">
 <link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="images/LogistixFavicon.ico" type="image/x-icon">
 <body>
 
 <!-- Navbar (sit on top) -->
