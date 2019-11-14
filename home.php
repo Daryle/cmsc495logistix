@@ -5,6 +5,8 @@ require_once ('process.php');
 
 
 //test!
+//session_start();
+$_SESSION['uname'] = $username;
 
 if(!isset($_SESSION['uname'])){
     
@@ -14,6 +16,7 @@ echo "<script>window.open('index.php','_self')</script>";
 
 else {
 }
+
 initAdmin();
 ?>
 
