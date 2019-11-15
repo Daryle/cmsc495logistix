@@ -1,14 +1,4 @@
-<html>
-<html>
-    <head>
-   
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
-        <title>User Authenticate</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
- 
-    </head>
-    <body>
-    <div class="container-reg">
+
 <?php
        
     // Needed For SQLFunctions to find users
@@ -25,7 +15,18 @@
          }else{
              echo "<script>window.open('index.php','_self')</script>";
          }
-?>      
+?>   
+<html>
+<html>
+    <head>
+   
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <title>User Authenticate</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+ 
+    </head>
+    <body>
+    <div class="container-reg">   
     </body>
 </html>
 

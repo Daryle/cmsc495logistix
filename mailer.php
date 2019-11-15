@@ -27,8 +27,7 @@ $headers = $email ;
 
 
 if(mail($to,$subject,$message,$headers)){
-	echo "Your mail has successfully been sent!";
-}
+
 
 // Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
@@ -55,14 +54,17 @@ try {
 
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = $subject . "From: " . $email;
+    $mail->Subject = $subject . " From: " . $email;
     $mail->Body    = $message;
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
+    
     echo 'Message has been sent';
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-}}
+}}}else{
+    echo "<script>window.open('index.php','_self')</script>";
+}
 
 ?>

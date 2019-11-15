@@ -6,7 +6,7 @@ require_once ('process.php');
 
 //test!
 //session_start();
-$_SESSION['uname'] = $username;
+// $_SESSION['uname'] = $username;
 
 if(!isset($_SESSION['uname'])){
     
