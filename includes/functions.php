@@ -19,7 +19,7 @@ function verifylogin($username, $password)
         $authcheck = password_verify($password, $row['passWord']);        
         if ($authcheck){
        
-        // session_start();
+        session_start();
         
         $_SESSION['uname'] = $username;
         
