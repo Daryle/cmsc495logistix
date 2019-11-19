@@ -297,7 +297,7 @@ logistixbutton:hover {
 }
 
 .logisTixBorderLineDGray{
-	border: 1px solid gray;
+	border: .5px solid lightblue;
 	width: 50%;
 	margin: auto;
 	line-height: 200px;

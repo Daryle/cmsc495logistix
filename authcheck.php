@@ -2,7 +2,7 @@
 <?php
 
     // Needed For SQLFunctions to find users
-	require_once('includes/functions.php');
+	require_once('./includes/functions.php');
 	
 	$mysqli = connectdb();	
 	// Retrieve Post Data
@@ -19,11 +19,11 @@
 <html>
 <html>
     <head>
-   
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <title>User Authenticate</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
- 
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/modalstyle.css">
     </head>
     <body>
     <div class="container-reg">   
