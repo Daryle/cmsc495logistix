@@ -62,7 +62,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <div class="w3-col s8 w3-bar">
       <span>Welcome, <strong><?php echo $_SESSION['uname'];?></strong></span><br>
       <span>Today is: <strong><?php echo date("m-d-y");?></strong></span><br>
-      <span>Access Level: <strong><?php isAdmin();?></strong></span><br>
+      <span>Access Level: <strong><?php isAdminMember();?></strong></span><br>
       
     </div>
   </div>

@@ -9,5 +9,7 @@ $name ="";
 $desc = "";
 $qty = "";
 
-
+if(isset($_GET['disable'])){
+    disableAccount();
+}
 
