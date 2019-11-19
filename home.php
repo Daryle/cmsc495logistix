@@ -3,15 +3,11 @@
 require_once('includes/functions.php');
 require_once ('process.php');
 
-if(!isset($_SESSION['uname'])){
-    
+if(!isset($_SESSION['uname'])){    
 echo "<script>window.open('index.php','_self')</script>";
-
 }
-
 else {
 }
-
 initAdmin();
 ?>
 
@@ -59,10 +55,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <span>Welcome, <strong><?php echo $_SESSION['uname'];?></strong></span><br>
       <span>Today is: <strong><?php echo date("m-d-y");?></strong></span><br>
       <span>Access Level: <strong><?php isAdminMember();?></strong></span><br>
-      
     </div>
   </div>
-  
+      
   <div class="w3-container">
     <h5><?php isAdminMember();?> Dashboard</h5>
   </div>
@@ -124,11 +119,19 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
      
   </div>
-  <!-- Header -->
+
+  
+ <?php if (isAdmin()){
+    ?>
+    <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
       <h5><b><i class="fa fa-users w3-medium"></i> Edit Staff Members</b></h5>
   </header>
-   <?php selectAllMembers();?>   
+<?php
+     selectAllMembers();
+}else {
+}
+  ?>   
 
 
 

@@ -1,10 +1,10 @@
 <?php
 
 // Include the required DBConnection information
-require_once('Includes/Dbconnect.php');
+require_once('includes/Dbconnect.php');
 
 //include the userclass
-require_once('Includes/FormObjects.php');
+require_once('includes/FormObjects.php');
 
 //function of verification if user login is correct
 function verifylogin($username, $password)
@@ -25,9 +25,14 @@ function verifylogin($username, $password)
         $_SESSION['uname'] = $username;       
         echo "<script>window.open('home.php','_self')</script>";       
         }else{
-            echo "<br>";
-            echo "Invalid entry<br><br>";
-            header('Refresh: 1; URL = index.php');
+            ?>
+    <div class="w3-container logisTixContainerAlpha">
+    <div class= "w3-container w3-center logisTixBorderLineDGray">
+    <img class= "w3-center" src="images/logistixlogotrue.png" width="50%"><br>
+    <b><?php echo 'Invalid Entry';?></b>
+   </div></div><?php
+
+            header('Refresh: 5; URL = index.php');
             }
         } }else{
         echo "<br>";
@@ -143,7 +148,7 @@ function updateProfilePic(){
                     <td><?php echo $access;?></td>
                     <td><?php echo $row['dateTime'];?></td>                  
                     <td>
-                       <a href="processMembers.php?disable=<?php echo $row['userID'];?>"
+                       <a href="process.php?disable=<?php echo $row['userID'];?>"
                           class="btn btn-danger">Disable</a></td></tr>
                 <?php endwhile; ?>                          
 </table></div><?php
