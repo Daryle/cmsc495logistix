@@ -1,0 +1,168 @@
+
+//connecting to database
+
+algorithm connectdb() {      		
+	// Get the DBParameters
+	getDbparms();
+	  
+	 // Try to connect
+	 new mysqli($mydbparms->getHost(), $mydbparms->getUsername(), 
+	                    $mydbparms->getPassword(),$mydbparms->getDb());
+	
+	   if $mysqli->connect_error)
+
+	      die('Connect Error (' . $mysqli->connect_errno . ') '
+	            . $mysqli->connect_error);      
+	   
+	  return $mysqli;
+	}
+
+//provide a link to login modal
+
+include ('includes/LoginModal.php');
+
+
+//this shows the latest 8 products
+
+algorithm showProducts(){
+	connectdb();
+    SELECT *, Timestamp(dateup) from products ORDER BY dateup DESC limit 8";
+    $result = $mysqli->query($sql);      
+    if num_rows===1
+	fetch_array(MYSQLI_ASSOC);
+    /* Fetch the results of the query */       
+    while $row = fetch_assoc()           
+    $row["PImage"];
+    $row["PName"];    
+	echo $name;
+	echo $image;
+}}
+}
+
+//login verification
+
+algorithm verifyLogin($username, $password){
+
+    connectdb();
+    "SELECT * from users WHERE userName='$username'"
+    $mysqli->query
+
+    if num_rows === 1
+    
+        etch_array(MYSQLI_ASSOC);
+        password_verify($password, $row['passWord']);        
+        if ($authcheck){
+        session_start();
+        
+        $_SESSION['uname'] = $username;
+        
+        echo "<script>window.open('home.php','_self')</script>";
+        
+          
+    }else{
+        echo "<br>";
+        echo "invalid entry";
+        echo "<br>";
+        header('Refresh: 1; URL = index.php');
+     }
+}
+
+//verification if first time user admin
+
+algorithm initAdmin(){
+    connectdb();
+
+    $_SESSION['uname'];
+
+	SELECT initAccess, access from users WHERE userName='$user'
+    query
+         
+    if num_rows===1
+    
+        fetch_array(MYSQLI_ASSOC);
+
+        $initAdmin = $row['initAccess'];
+        $access = $row['access'];
+        
+  if ($access == 1){
+       
+      if($initAdmin == 0){
+          
+         goto   'changePassword.php'
+    }}} 
+
+    //to find the username
+
+    echo $_SESSION['uname'];
+
+    //to find if user is admin or admin to be greeted as such
+
+   	algorithm isAdminMember(){
+
+   	connectdb();
+    
+    $user=$_SESSION['uname'];
+
+ 	SELECT initAccess, access from users WHERE userName='$user'
+    query
+         
+    if num_rows===1
+    
+        fetch_array(MYSQLI_ASSOC);
+        $access = $row['access'];
+        
+        if ($access == 1){
+            echo "Admin";
+       
+        }  if($access == 0){
+            echo "Member";
+    }  
+} 
+
+//side navigation will vary display depending on what type of role
+
+	algorithm isAdminSide(){
+    $mysqli = connectdb();
+    $access = "";
+    $user=$_SESSION['uname'];
+    $sql = "SELECT initAccess, access from users WHERE userName='$user'";
+    $result = $mysqli->query($sql);
+         
+    if num_rows===1
+    
+        fetch_array(MYSQLI_ASSOC);
+        $access = $row['access'];
+        
+        if $access == 1)
+            isAdminSideDisplay();
+       
+        if $access == 0{
+            isMemberSideDisplay();
+            
+        } 
+    }
+
+//sidenav for admin
+
+algorithm isAdminSideDisplay (){
+	echo "Overview"
+	echo "Inventory"
+	echo "Add Staff"
+	echo "Change Password"
+} 
+
+//sidenav for member
+
+algorithm isAdminSideDisplay (){
+	echo "Overview"
+	echo "Inventory"
+	echo "Change Password"
+}
+
+//sidenav for logout
+
+ session_destroy();
+
+ echo "Thanks for using LogisTix Inventory Management System"
+
+ redirect (index.php);

@@ -1,9 +1,4 @@
   <?php
-
-
-
-
-
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
@@ -20,7 +15,7 @@ $message = $_POST['comment'];
 $subject = $_POST['subject'];
 
 
-$to = "mackieltm@gmail.com";
+$to = "logistixumgc@gmail.com";
 
 
 $headers = $email ;
@@ -38,13 +33,13 @@ try {
     $mail->isSMTP();                                            // Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'logistixumgc@gmail.com';                     // SMTP username
+    $mail->Username   = 'logistixguest@gmail.com';                     // SMTP username
     $mail->Password   = 'LogisTix!@#495';                               // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
     $mail->Port       = 465;                                    // TCP port to connect to
 
     //Recipients
-    $mail->setFrom('logistixumgc@gmail.com', 'Mailer');
+    $mail->setFrom('logistixguest@gmail.com', 'LogisTix Visitor');
     $mail->addAddress('logistixumgc@gmail.com', 'Logistix');     // Add a recipient
 
 
@@ -59,8 +54,8 @@ try {
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
-    
     echo 'Message has been sent';
+    echo "<script>window.open('index.php','_self')</script>";
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }}}else{
