@@ -1,6 +1,6 @@
 
 <?php
-       
+
     // Needed For SQLFunctions to find users
 	require_once('includes/functions.php');
 	
@@ -29,4 +29,3 @@
     <div class="container-reg">   
     </body>
 </html>
-

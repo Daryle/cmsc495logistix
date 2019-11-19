@@ -12,30 +12,29 @@ function verifylogin($username, $password)
     $mysqli = connectdb();
     $sql = "SELECT * from users WHERE userName='$username'";
     $result = $mysqli->query($sql);
-
     if ($result->num_rows === 1)
     {
         $row = $result->fetch_array(MYSQLI_ASSOC);
+        if($row['access']==4){
+            echo "Your account is disabled, contact the administrator";
+            header('Refresh: 5; URL = index.php');
+        }else{
         $authcheck = password_verify($password, $row['passWord']);        
-        if ($authcheck){
-       
-        session_start();
-        
-        $_SESSION['uname'] = $username;
-        
-        echo "<script>window.open('home.php','_self')</script>";
-        
+        if ($authcheck){      
+        session_start();        
+        $_SESSION['uname'] = $username;       
+        echo "<script>window.open('home.php','_self')</script>";       
         }else{
             echo "<br>";
             echo "Invalid entry<br><br>";
             header('Refresh: 1; URL = index.php');
             }
-    }else{
+        } }else{
         echo "<br>";
         echo "invalid entry";
         echo "<br>";
         header('Refresh: 1; URL = index.php');
-     }
+    }
 }
 
 //update password function
@@ -119,6 +118,51 @@ function updateProfilePic(){
     header("location: home.php");
 }}}
 
+  function selectAllMembers(){
+    $mysqli = connectdb(); 
+    $username = $_SESSION['uname'];
+    $result =$mysqli->query("SELECT * from users where userName !='$username'");?>
+            <div class ="w3-container">
+            <table class="w3-table w3-striped w3-white">
+                <thead class= "logistixBlueBack"><tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Status</th>
+                        <th>Date of Status</th>
+                        <th colspan="2">Action</th>
+                    </tr> </thead> <?php 
+            while($row = $result->fetch_assoc()): 
+                if ($row['access']==4){
+                $access = "Disabled";
+                } else{
+                    $access = "Active";
+                }
+                ?>
+                <tr><td><?php echo $row['userID'];?></td>
+                    <td><?php echo $row['userName'];?></td>
+                    <td><?php echo $access;?></td>
+                    <td><?php echo $row['dateTime'];?></td>                  
+                    <td>
+                       <a href="processMembers.php?disable=<?php echo $row['userID'];?>"
+                          class="btn btn-danger">Disable</a></td></tr>
+                <?php endwhile; ?>                          
+</table></div><?php
+}
+
+function disableAccount ()
+{
+    // Connect to the database
+    $mysqli = connectdb();
+    $userid = $_GET['disable'];
+
+    $disableAccess = "4";
+    $disableDate = date('Y-m-d H:i:s');
+
+    $mysqli->query("UPDATE users SET access = '$disableAccess', dateTime= '$disableDate' WHERE userID='$userid'")
+    or die($mysqli->error());
+    
+    header("location: home.php");
+}
 
 function initAdmin(){
     $mysqli = connectdb();
@@ -143,7 +187,24 @@ function initAdmin(){
     }}}        
 }
 
-
+function isAdmin(){
+    $mysqli = connectdb();
+    $access = "";
+    $user=$_SESSION['uname'];
+    $sql = "SELECT initAccess, access from users WHERE userName='$user'";
+    $result = $mysqli->query($sql);
+         
+    if ($result->num_rows===1)
+    {
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+        $access = $row['access'];
+        
+        if ($access == 1){
+            
+        return true;
+        } 
+    }  
+}
 
 function isAdminMember(){
     $mysqli = connectdb();
@@ -194,7 +255,7 @@ function isAdminSideDisplay(){
     ?>
     <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding logistixBlueBack"><i class="fa fa-users fa-fw"></i>  Overview</a>
+    <a href="home.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Overview</a>
     <a href="inventory.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Inventory</a>
     <a href="addStaff.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Add Staff</a>
     <a href="changePassword.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>Change Password</a><br><br>
