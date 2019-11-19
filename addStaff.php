@@ -3,6 +3,10 @@
 require_once('includes/functions.php');
 require_once ('process.php');
 
+
+if (!isAdmin()){
+  echo "<script>window.open('index.php','_self')</script>";
+}
 if(!isset($_SESSION['uname'])){
     
 echo "<script>window.open('index.php','_self')</script>";
@@ -11,6 +15,7 @@ echo "<script>window.open('index.php','_self')</script>";
 
 else {
 }
+
 
 initAdmin();
 ?>
@@ -23,9 +28,8 @@ initAdmin();
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="includes/style.css">
+
 <link rel="stylesheet" href="css/style.css">
-<link rel="icon" href="images/LogistixFavicon.ico" type="image/x-icon">
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
@@ -58,13 +62,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <div class="w3-col s8 w3-bar">
       <span>Welcome, <strong><?php echo $_SESSION['uname'];?></strong></span><br>
       <span>Today is: <strong><?php echo date("m-d-y");?></strong></span><br>
-      <span>Access Level: <strong><?php isAdminMember();?></strong></span><br>
+      <span>Access Level: <strong><?php isAdmin();?></strong></span><br>
       
     </div>
   </div>
   
   <div class="w3-container">
-    <h5><?php isAdminMember();?> Dashboard</h5>
+    <h5>Dashboard</h5>
   </div>
 <?php isAdminSide();?>
 </nav>
@@ -86,10 +90,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <div class="w3-container w3-red w3-padding-16">
         <div class="w3-left"><i class="fa fa-exclamation w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>0</h3>
+          <h3>52</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>Out of Stock</h4>
+        <h4>Messages</h4>
       </div>
     </div>
     <div class="w3-quarter">
@@ -122,24 +126,62 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <h4>Users</h4>
       </div>
     </div>
-     
   </div>
-  <!-- Header -->
-  <header class="w3-container" style="padding-top:22px">
-      <h5><b><i class="fa fa-users w3-medium"></i> Edit Staff Members</b></h5>
-  </header>
-   <?php selectAllMembers();?>   
+
+   <div class="w3-container ">
+      <h5><b>Add a Staff Member &nbsp&nbsp</b></h5></div>
+
+    
+    <!--This starts register form-->
+    <div class="w3-container w3-padding-32">
+    <form class="modal-content animate" name="register" method="POST" action="register.php">
+
+ 
 
 
+        <label for="fname"><b>First Name</b></label><br>
+      <input class="w3-input" type="text" placeholder="Enter First Name" name="fname" required> 
+      <br>
+      <label for="lname"><b>Last Name</b></label><br>
+      <input class="w3-input" type="text" placeholder="Enter Last Name" name="lname" required>
+      <br>
+      <label for="cpword"><b>Username</b></label><br>
+      <input class="w3-input" type="text" placeholder="Username" name="uname" required>
+      <br>
+      <label for="email"><b>Email</b></label><br>
+      <input class="w3-input" type="text" placeholder="Enter Email" name="email" required>
+      <br>
+      <label for="pword"><b>Password</b></label><br>
+      <input class="w3-input" type="password" placeholder="Enter Password" name="pword" required>
+
+<!--      <label for="cpword"><b>Confirm Password</b></label>
+      <input type="password" placeholder="Confirm Password" name="cpword" required>-->
+     <br>   <br>
+<button class="w3-button logistixBlueBack" type="submit" name="submit">Register</button><br><br>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label><br>
+
+
+    <div class="w3-container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+      
+    </div>
+  </form>
+    
+  </div>
+
+    
+  <!--This ends register form-->  
 
   <!-- Footer -->
   <footer class="w3-container w3-padding-16 w3-light-grey">
     <h4>UMGC | CMSC 495</h4>
     <p>Team 1 - LogisTix Inventory Management System 2019</p>
   </footer>
-
-  <!-- End page content -->
 </div>
+  <!-- End page content -->
+
 
 <script>
 // Get the Sidebar
@@ -167,4 +209,4 @@ function w3_close() {
 </script>
 
 </body>
-</html>
+</html>                

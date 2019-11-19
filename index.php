@@ -92,7 +92,7 @@
   <!-- Contact Section -->
   <div class="w3-container w3-padding-32" id="contact">
     <h3 class="w3-border-bottom logistixOrange w3-padding-16">Contact</h3>
-    <p>Lets get in touch and talk about your item of interest.</p>
+    <p>Let's get in touch and talk about your item of interest.</p>
 
     <form action="mailer.php" method="post">
 
