@@ -13,16 +13,12 @@
 <link rel="stylesheet" href="css/modalstyle.css">
 <link rel="icon" href="images/LogistixFavicon.ico" type="image/x-icon">
 <body>
-
     <div class="w3-container logisTixContainerAlpha">
     <div class= "w3-container w3-center logisTixBorderLineDGray">
         <img class= "w3-center" src="images/logistixlogotrue.png" width="50%"><br>
-        <?php 
-        if(idleKick()){
-            "You were idle for a long time, please re-log";
-        }else{ 
-        echo 'You have logged out';              
-        }?>
+        <?php
+        echo 'You have been away for a long time, please re-log';       
+        ?>
    </div></div>
         <?php header('Refresh: 2; URL = index.php');?>
 </body>

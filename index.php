@@ -1,8 +1,6 @@
 <?php
- require_once('includes/functions.php');
- 
+ require_once('includes/functions.php'); 
 ?>
-
 <!DOCTYPE html>
 <html>
 <title>LogisTix Inventory</title>
@@ -19,11 +17,8 @@
               LogisTix</div> <div class="logistixBlue">Inventory</div></a>
           
 <?php include ('includes/LoginModal.php');?> 
-
     
-  </div>
-    
-</div>
+</div></div>
 </div></div>
 <!-- Header -->
 <header class="w3-display-container w3-content w3-wide" style="max-width:2000px;" id="home">
@@ -42,12 +37,8 @@
   <div class="w3-container w3-padding-32" id="projects">
     <h3 class="w3-border-bottom logistixOrange w3-padding-16">New Items</h3>
   </div>
-<?php  indexShowProducts();?> 
-  
+<?php  indexShowProducts();?>  
 </div>
-
-
-
 
   <!-- About Section -->
   <div class="w3-container w3-padding-32" id="about">
@@ -113,7 +104,6 @@
 
 <!-- End page content -->
 </div>
-
 
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-16">
