@@ -51,36 +51,20 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
-    <div class="w3-col s3">
-        <img src="<?php echo showProfilePic();?>" class="w3-circle w3-margin-right" style="width:50px">
-        
+    <div class="w3-col s4">
+        <img src="<?php echo showProfilePic();?>" class="w3-circle w3-margin-left" style="width:60px">      
     </div>
-      <div class="">
-          
+      <div class="">         
     <div class="w3-col s8 w3-bar">
       <span>Welcome, <strong><?php echo $_SESSION['uname'];?></strong></span><br>
       <span>Today is: <strong><?php echo date("m-d-y");?></strong></span><br>
-      <span>Access Level: <strong><?php isAdmin();?></strong></span><br>
-      
+      <span>Access Level: <strong><?php isAdminMember();?></strong></span><br>
     </div>
-  </div>
-  
+  </div>     
   <div class="w3-container">
-    <h5>Dashboard</h5>
+    <h5><?php isAdminMember();?> Dashboard</h5>
   </div>
-  <div class="w3-bar-block">
-    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="home.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Overview</a>
-    <a href="inventory.php" class="w3-bar-item w3-button w3-padding  logistixBlueBack"><i class="fa fa-eye fa-fw"></i>  Inventory</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a>
-    <a href="changePassword.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>Change Password</a><br><br>
-  </div>
+<?php isAdminSide();?>
 </nav>
 
 
