@@ -118,7 +118,7 @@ function createUser ($user)
 
 function updateProfilePic(){
     $mysqli = connectdb();
-    $username=$_POST['uname'];
+    $username=$_SESSION['uname'];
        
     $image='images/' .$_FILES['image']['name'];
     $image= mysqli_real_escape_string($mysqli, $image);
@@ -131,6 +131,18 @@ function updateProfilePic(){
 
     header("location: home.php");
 }}}
+
+function showProfilePic(){
+    $mysqli = connectdb();
+    $username=$_SESSION['uname'];
+
+    // $mysqli->query("SELECT image from users WHERE userName='$username'");
+    $sql = "SELECT * from users WHERE userName='$username'";
+    $result = $mysqli->query($sql);
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+    $showPic = $row['image'];
+    echo $showPic;
+}
 
   function selectAllMembers(){
     $mysqli = connectdb(); 
@@ -325,7 +337,7 @@ function idleKick(){
     
     //Expire the session if user is inactive for 30
     // 1 minute for testing try 60 for an hour.
-    $expireAfter = 1;
+    $expireAfter = 360;
  
     //Check to see if our "last action" session
     //variable has been set.
