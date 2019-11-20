@@ -2,25 +2,21 @@
 <html>
     <title>User Registration</title>
 	<head>  
-            <meta name="viewport" content="width=device-width, initial-scale=1"> 
-            <link rel="stylesheet" href="css/style.css">
-            <link rel="stylesheet" href="css/modalstyle.css">
-        </head>
+      <meta name="viewport" content="width=device-width, initial-scale=1"> 
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/modalstyle.css">
+  </head>
 <body> 
-            <div class="w3-container logisTixContainerAlpha w3-padding-16">
-            <div class= "w3-container w3-center logisTixBorderLineDGray w3-padding-16">
-            <img class= "w3-center" src="images/logistixlogotrue.png" width="50%"><br>
+      <div class="w3-container logisTixContainerAlpha w3-padding-16">
+      <div class= "w3-container w3-center logisTixBorderLineDGray w3-padding-16">
+      <img class= "w3-center" src="images/logistixlogotrue.png" width="50%"><br>
 <?php	       
     // Needed For SQLFunctions getFaculty call
-    require_once('includes/functions.php');
-	            
-        if(isset($_POST["submit"])) {    	 
-        
+    require_once('includes/functions.php');	            
+        if(isset($_POST["submit"])) {    	         
            validate_form();	   	     
 	}else{
-
-            echo "<script>window.open('index.php','_self')</script>";
-      
+            echo "<script>window.open('index.php','_self')</script>";     
   	} 
 	
     function validate_form(){
@@ -40,8 +36,7 @@
   	// Check for accounts that already exist and Do insert
         
   	if ($count==0) 
-  	{  
-            
+  	{             
             $res = createUser($user);
   		
             if ($res) {
@@ -54,7 +49,6 @@
                 echo "<a href='includes/registerModal.php'> Return to Student App.</a>";                 
             }
   	}else{           
-
             echo "<h3>A user account with that username already exist.</h3> ";  	
             echo "<a href='index.php'> Return to registration.</a>";             
   	}       

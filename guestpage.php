@@ -6,7 +6,6 @@ if(!isset($_SESSION['uname'])){
 $name = "Guest";
 $account = "Guest";
 }
-
 else {
 }
 ?>
@@ -35,31 +34,25 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
         <span><a href="logout.php" class="w3-bar-item w3-button">Exit</a></span>
-    </div>
-    
-  </div>
-    
+    </div>  
+  </div>   
 </div>
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
-        <img src="images/ironman2.jpg" class="w3-circle w3-margin-right" style="width:50px">
-        
+        <img src="images/ironman2.jpg" class="w3-circle w3-margin-right" style="width:50px">       
     </div>
-      <div class="">
-          
+      <div class="">         
     <div class="w3-col s8 w3-bar">
       <span>Welcome, <strong><?php echo $name;?></strong></span><br>
-      <span>Today is: <strong><?php echo date("m-d-y");?></strong></span><br>
-      
-      
+      <span>Today is: <strong><?php echo date("m-d-y");?></strong></span><br> 
+      <span>Access Level: <strong>Guest</strong></span><br>    
     </div>
-  </div>
-  
+  </div>  
   <div class="w3-container">
-    <h5><?php $name;?> Dashboard</h5>
+    <h5>Guest Dashboard</h5>
   </div>
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
@@ -68,9 +61,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
 </nav>
 
-
 <!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay">
+</div>
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
@@ -80,11 +73,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
   </header>
 
-
-
   <div class="w3-container">
-      <h5>List of Inventory &nbsp&nbsp</h5>
-    
+      <h5>List of Inventory &nbsp&nbsp</h5> 
+
     <!--This starts inventory list-->
 
   <!-- end of inventory list-->  
@@ -94,7 +85,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <h4>UMGC | CMSC 495</h4>
     <p>Team 1 - LogisTix Inventory Management System 2019</p>
   </footer>
-
   <!-- End page content -->
 </div>
 
@@ -122,6 +112,5 @@ function w3_close() {
   overlayBg.style.display = "none";
 }
 </script>
-
 </body>
 </html>

@@ -9,6 +9,7 @@ echo "<script>window.open('index.php','_self')</script>";
 else {
 }
 initAdmin();
+idleKick();
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +17,6 @@ initAdmin();
 <title>LogisTix</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="includes/style.css">
@@ -36,37 +36,32 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
         <span><a href="logout.php" class="w3-bar-item w3-button">Logout</a></span>
-    </div>
-    
-  </div>
-    
+    </div>   
+  </div>   
 </div>
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
-        <img src="images/ironman2.jpg" class="w3-circle w3-margin-right" style="width:50px">
-        
+        <img src="images/ironman2.jpg" class="w3-circle w3-margin-right" style="width:50px">      
     </div>
-      <div class="">
-          
+      <div class="">         
     <div class="w3-col s8 w3-bar">
       <span>Welcome, <strong><?php echo $_SESSION['uname'];?></strong></span><br>
       <span>Today is: <strong><?php echo date("m-d-y");?></strong></span><br>
       <span>Access Level: <strong><?php isAdminMember();?></strong></span><br>
     </div>
-  </div>
-      
+  </div>     
   <div class="w3-container">
     <h5><?php isAdminMember();?> Dashboard</h5>
   </div>
 <?php isAdminSide();?>
 </nav>
 
-
 <!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay">
+</div>
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
@@ -116,10 +111,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <div class="w3-clear"></div>
         <h4>Users</h4>
       </div>
-    </div>
-     
+    </div>     
   </div>
-
   
  <?php if (isAdmin()){
     ?>
@@ -131,9 +124,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
      selectAllMembers();
 }else {
 }
-  ?>   
-
-
+  ?> 
 
   <!-- Footer -->
   <footer class="w3-container w3-padding-16 w3-light-grey">
@@ -161,13 +152,11 @@ function w3_open() {
     overlayBg.style.display = "block";
   }
 }
-
 // Close the sidebar with the close button
 function w3_close() {
   mySidebar.style.display = "none";
   overlayBg.style.display = "none";
 }
 </script>
-
 </body>
 </html>

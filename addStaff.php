@@ -3,21 +3,17 @@
 require_once('includes/functions.php');
 require_once ('process.php');
 
-
 if (!isAdmin()){
   echo "<script>window.open('index.php','_self')</script>";
 }
 if(!isset($_SESSION['uname'])){
-    
+   
 echo "<script>window.open('index.php','_self')</script>";
-
 }
-
 else {
 }
-
-
 initAdmin();
+idleKick();
 ?>
 
 <!DOCTYPE html>
@@ -25,10 +21,8 @@ initAdmin();
 <title>LogisTix</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <link rel="stylesheet" href="css/style.css">
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
@@ -44,38 +38,32 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
         <span><a href="logout.php" class="w3-bar-item w3-button">Logout</a></span>
-    </div>
-    
-  </div>
-    
+    </div>   
+  </div>    
 </div>
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
-        <img src="images/ironman2.jpg" class="w3-circle w3-margin-right" style="width:50px">
-        
+        <img src="images/ironman2.jpg" class="w3-circle w3-margin-right" style="width:50px">       
     </div>
-      <div class="">
-          
+    <div class="">          
     <div class="w3-col s8 w3-bar">
       <span>Welcome, <strong><?php echo $_SESSION['uname'];?></strong></span><br>
       <span>Today is: <strong><?php echo date("m-d-y");?></strong></span><br>
-      <span>Access Level: <strong><?php isAdminMember();?></strong></span><br>
-      
+      <span>Access Level: <strong><?php isAdminMember();?></strong></span><br>     
     </div>
-  </div>
-  
+  </div>  
   <div class="w3-container">
     <h5>Dashboard</h5>
   </div>
 <?php isAdminSide();?>
 </nav>
 
-
 <!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay">
+</div>
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
@@ -127,19 +115,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       </div>
     </div>
   </div>
-
    <div class="w3-container ">
       <h5><b>Add a Staff Member &nbsp&nbsp</b></h5></div>
-
     
     <!--This starts register form-->
     <div class="w3-container w3-padding-32">
     <form class="modal-content animate" name="register" method="POST" action="register.php">
 
- 
-
-
-        <label for="fname"><b>First Name</b></label><br>
+      <label for="fname"><b>First Name</b></label><br>
       <input class="w3-input" type="text" placeholder="Enter First Name" name="fname" required> 
       <br>
       <label for="lname"><b>Last Name</b></label><br>
@@ -156,22 +139,18 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 <!--      <label for="cpword"><b>Confirm Password</b></label>
       <input type="password" placeholder="Confirm Password" name="cpword" required>-->
-     <br>   <br>
-<button class="w3-button logistixBlueBack" type="submit" name="submit">Register</button><br><br>
+      <br><br>
+      <button class="w3-button logistixBlueBack" type="submit" name="submit">Register</button><br><br>
       <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
+      <input type="checkbox" checked="checked" name="remember"> Remember me
       </label><br>
 
 
-    <div class="w3-container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-      
+      <div class="w3-container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>     
     </div>
-  </form>
-    
-  </div>
-
-    
+  </form>    
+  </div>   
   <!--This ends register form-->  
 
   <!-- Footer -->
@@ -181,7 +160,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </footer>
 </div>
   <!-- End page content -->
-
 
 <script>
 // Get the Sidebar
@@ -207,6 +185,5 @@ function w3_close() {
   overlayBg.style.display = "none";
 }
 </script>
-
 </body>
 </html>                
