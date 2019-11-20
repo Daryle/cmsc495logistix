@@ -13,3 +13,6 @@ if(isset($_GET['disable'])){
     disableAccount();
 }
 
+if(isset($_POST['updatepic'])){
+    updateProfilePic();   
+}
