@@ -16,8 +16,8 @@ function verifylogin($username, $password)
     {
         $row = $result->fetch_array(MYSQLI_ASSOC);
         if($row['access']==4){
-            echo "Your account is disabled, contact the administrator";
-            header('Refresh: 5; URL = index.php');
+            disabledAccMsg();
+            header('Refresh: 3; URL = index.php');
         }else{
         $authcheck = password_verify($password, $row['passWord']);        
         if ($authcheck){      
@@ -40,6 +40,15 @@ function verifylogin($username, $password)
         echo "<br>";
         header('Refresh: 1; URL = index.php');
     }
+}
+
+function disabledAccMsg(){
+    ?>
+    <div class="w3-container logisTixContainerAlpha">
+    <div class= "w3-container w3-center logisTixBorderLineDGray">
+    <img class= "w3-center" src="images/logistixlogotrue.png" width="50%"><br>
+    <b><?php echo 'Your account is disabled, contact the administrator';?></b>
+   </div></div><?php
 }
 
 //update password function
