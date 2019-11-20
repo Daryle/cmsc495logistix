@@ -1,6 +1,13 @@
 <?php
 require_once('includes/functions.php');
 require_once ('process.php');
+
+if(!isset($_SESSION['uname'])){
+echo "<script>window.open('index.php','_self')</script>";
+}
+else {
+}
+idleKick();
 ?>
 <!DOCTYPE html>
 <html>

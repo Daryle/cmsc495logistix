@@ -1,6 +1,5 @@
 
 <?php
-
     // Needed For SQLFunctions to find users
 	require_once('./includes/functions.php');
 	
