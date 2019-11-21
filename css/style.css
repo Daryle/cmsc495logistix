@@ -331,3 +331,12 @@ span.psw {
      width: 100%;
   }
 }
+
+.navbar-brand-img {
+  padding: 8px 16px;
+  float: left;
+  width: 16rem;
+  border: none;
+  display: block;
+  outline: 0;
+}

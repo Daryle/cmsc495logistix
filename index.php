@@ -1,44 +1,40 @@
-<?php
- require_once('includes/functions.php'); 
-?>
-<!DOCTYPE html>
-<html>
-<title>LogisTix Inventory</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, min-width=800, initial-scale=1">
-<link rel="stylesheet" href="css/style.css">
-<link rel="icon" href="images/LogistixFavicon.ico" type="image/x-icon">
-<body>
+<?php include 'header.php'; ?>
 
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-wide w3-padding w3-card"><div class ="logistixOrange">
-          <a href="#home" class="w3-bar-item w3-button">
-              LogisTix</div> <div class="logistixBlue">Inventory</div></a>
-          
-<?php include ('includes/LoginModal.php');?> 
-    
-</div></div>
-</div></div>
-<!-- Header -->
-<header class="w3-display-container w3-content w3-wide" style="max-width:2000px;" id="home">
-  <img class="w3-image" src="images/6648.jpg" alt="Architecture" width="2000" height="800">
-  <div class="w3-display-middle w3-margin-top w3-center">
+<body id="page-top" cz-shortcut-listen="true">
+  <!-- Navbar (sit on top) -->
+  <div class="w3-top">
+    <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+      <a href="index.php" class=""><img class="navbar-brand-img" src="/images/logistix_navbar_logo.png" alt="Logistix Inventory Text Logo"></a>
+      <!-- Float links to the right. Hide them on small screens -->
+      <div class="w3-right w3-hide-small ">
+        <!-- TODO: if-else for login / logout -->
+        <a onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button ">Login</a>
+        <!-- TODO: if-else for Continue as guest / None -->
+        <a href="./guestpage.php" class="w3-bar-item w3-button">Continue as Guest</a>
+      </div>
+    </div>
+    <?php include('includes/LoginModal.php'); ?>
+  </div>
+
+  <!-- Header -->
+  <header class="w3-display-container w3-content w3-wide" style="max-width:2000px;" id="home">
+    <img class="w3-image" src="images/6648.jpg" alt="Architecture" width="2000" height="800">
+    <div class="w3-display-middle w3-margin-top w3-center">
       <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding logistixOrangeBack w3-opacity-min">
-              <b>LogisTix</b></span> <span class="w3-hide-small logistixBlue">
-                  Inventory</span></h1>
-  </div>
-</header>
+          <b>LogisTix</b></span> <span class="w3-hide-small logistixBlue">
+          Inventory</span></h1>
+    </div>
+  </header>
 
-<!-- Page content -->
-<div class="w3-content w3-padding" style="max-width:1564px">
+  <!-- Page content -->
+  <div class="w3-content w3-padding" style="max-width:1564px">
 
-  <!-- Project Section -->
-  <div class="w3-container w3-padding-32" id="projects">
-    <h3 class="w3-border-bottom logistixOrange w3-padding-16">New Items</h3>
+    <!-- Project Section -->
+    <div class="w3-container w3-padding-32" id="projects">
+      <h3 class="w3-border-bottom logistixOrange w3-padding-16">New Items</h3>
+    </div>
+    <?php indexShowProducts(); ?>
   </div>
-<?php  indexShowProducts();?>  
-</div>
 
   <!-- About Section -->
   <div class="w3-container w3-padding-32" id="about">
@@ -51,7 +47,7 @@
 
   <div class="w3-row-padding w3-grayscale">
     <div class="w3-col l3 m6 w3-margin-bottom">
-        <img src="images/capAmerica2.jpg" alt="John" style="width:100%">
+      <img src="images/capAmerica2.jpg" alt="John" style="width:100%">
       <h3>Brandon Elliott</h3>
       <p class="w3-opacity">Project Manager</p>
       <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
@@ -96,19 +92,17 @@
       </button>
     </form>
   </div>
-  
-<!-- Image of location/map -->
-<div class="w3-container"><div class="w3-center">
-  <img src="images/logistixlogoTrue.png" class="w3-image" style="width:15%">
-    </div></div>
 
-<!-- End page content -->
-</div>
+  <!-- Image of location/map -->
+  <div class="w3-container">
+    <div class="w3-center">
+      <img src="images/logistixlogoTrue.png" class="w3-image" style="width:15%">
+    </div>
+  </div>
 
-<!-- Footer -->
-<footer class="w3-center w3-black w3-padding-16">
-  <p>Project by UMUC | CMSC 495 | TEAM 1</a></p>
-</footer>
+  <!-- End page content -->
+  </div>
 
+  <?php include 'footer.php'; ?>
 </body>
 </html>
