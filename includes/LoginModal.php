@@ -5,6 +5,36 @@
 <link rel="stylesheet" href="./css/modalstyle.css">
 
 <body>
+  <style>
+    button{
+        background-color: #246EB5 !important;
+    }
+    /* Extra styles for the cancel button */
+    .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: orangered !important;
+    }
+    img.avatar {
+        width: 40%;
+        border-radius: 0%;
+}
+        /* The Modal (background) */
+    .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 50% !important;  /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding: 60px;
+    color: #3a3a3a!important;
+}
+</style>
 
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small">

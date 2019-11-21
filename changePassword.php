@@ -14,6 +14,7 @@ idleKick();
 <title>LogisTix</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="images/LogistixFavicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="includes/style.css">
@@ -61,14 +62,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
+    <h5><b><i class="fa fa-cog"></i> Change Password</b></h5>
   </header>
   <form class="modal-content animate" name="register" method="POST" action="updatePass.php">
     
       <div class="w3-container">
    
       <input type="hidden" name="uname" value="<?php echo $_SESSION['uname'];?>" readonly>
-      <label for="pword"><b>Password Change</b></label>
+      
       <input type="password" placeholder="Enter Password" name="pword" required><br><br>
       
     <button type="submit" name="submit" class="w3-button logistixBlueBack">Update Password</button>
