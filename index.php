@@ -25,8 +25,7 @@
   <img class="w3-image" src="images/6648.jpg" alt="Architecture" width="2000" height="800">
   <div class="w3-display-middle w3-margin-top w3-center">
       <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding logistixOrangeBack w3-opacity-min">
-              <b>LogisTix</b></span> <span class="w3-hide-small logistixBlue">
-                  Inventory</span></h1>
+              <b>LogisTix</b></span> <span class="w3-hide-small logistixBlue">Inventory</span></h1>
   </div>
 </header>
 
@@ -107,7 +106,7 @@
 
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-16">
-  <p>Project by UMUC | CMSC 495 | TEAM 1</a></p>
+  <p>Project by UMGC | CMSC 495 | TEAM 1 | 2019</a></p>
 </footer>
 
 </body>
