@@ -292,13 +292,8 @@ function isMemberSideDisplay() {?>
 }
 
 //End user management
-
-
-
 //Start product management
-
 //will insert product table and manufacturers table
-
 
 function indexShowProducts() {
     $mysqli = connectdb();
@@ -309,20 +304,17 @@ function indexShowProducts() {
         $row = $result->fetch_array(MYSQLI_ASSOC);
     }?> 
     <br>
-    <div class="w3-row-padding">
-        <?php
-            /* Fetch the results of the query */
-            while ($row = $result->fetch_assoc()) {
-                $image = $row["PImage"];
-                $name = $row["PName"]; ?>
-
-                <div class="w3-col l3 m6 w3-margin-bottom">
-                    <div class="w3-display-container">
-                        <div class="w3-display-topleft logistixBlueBack w3-padding"><?php echo $name; ?></div>
-                        <img src="<?php echo $image; ?>" alt="<?php echo $name; ?>" style="width:100%">
-                    </div>
-                </div> <?php
-            }
+    <div class="w3-row-padding"><?php
+        /* Fetch the results of the query */
+        while ($row = $result->fetch_assoc()) {
+            $image = $row["PImage"];
+            $name = $row["PName"]; ?>
+            <div class="w3-display-container w3-col l3 m6">
+                <div class="w3-display-topleft logistixBlueBack w3-padding"><?php echo $name; ?></div>
+                <div><img src="<?php echo $image; ?>" alt="<?php echo $name; ?>" style="width:100%;"></div>
+            </div>
+     <?php 
+    } ?>  </div> <?php
 }
 
 function idleKick() {

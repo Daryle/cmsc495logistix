@@ -20,9 +20,9 @@
   <header class="w3-display-container w3-content w3-wide" style="max-width:2000px;" id="home">
     <img class="w3-image" src="images/6648.jpg" alt="Architecture" width="2000" height="800">
     <div class="w3-display-middle w3-margin-top w3-center">
-      <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding logistixOrangeBack w3-opacity-min">
-          <b>LogisTix</b></span> <span class="w3-hide-small logistixBlue">
-          Inventory</span></h1>
+      <h1 class="w3-xxlarge w3-text-white">
+        <span class="w3-padding logistixOrangeBack w3-opacity-min"><b>LogisTix</b></span> 
+        <span class="w3-hide-small logistixBlue">Inventory</span></h1>
     </div>
   </header>
 
@@ -30,11 +30,8 @@
   <div class="w3-content w3-padding" style="max-width:1564px">
 
     <!-- Project Section -->
-    <div class="w3-container w3-padding-32" id="projects">
-      <h3 class="w3-border-bottom logistixOrange w3-padding-16">New Items</h3>
-    </div>
+    <h3 class="w3-border-bottom logistixOrange w3-padding-16" id="projects">New Items</h3>
     <?php indexShowProducts(); ?>
-  </div>
 
   <!-- About Section -->
   <div class="w3-container w3-padding-32" id="about">
