@@ -1,15 +1,10 @@
 <?php
-
-// Include the required DBConnection information
-require_once('includes/Dbconnect.php');
-
-//include the userclass
-require_once('includes/FormObjects.php');
+require_once('includes/Dbconnect.php'); // Include the required DBConnection information
+require_once('includes/FormObjects.php'); //include the userclass
 
                                                 /*** Start of user management functions ***/
-
 //function of verification if user login is correct
-function verifylogin($username, $password)
+function verifylogin($username, $password) 
 {
     $mysqli = connectdb();
     $sql = "SELECT * from users WHERE userName='$username'";
@@ -378,7 +373,6 @@ function indexShowProducts(){
         <div class="w3-display-topleft logistixBlueBack w3-padding"><?php echo $name; ?></div>
         <img src="<?php echo $image;?>" alt="<?php echo $name;?>" style="width:100%"></div></div><?php
 }}
-
 
 
 /*** end of product management functions **/
