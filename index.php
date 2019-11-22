@@ -4,7 +4,7 @@
   <!-- Navbar (sit on top) -->
   <div class="w3-top">
     <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-      <a href="index.php" class=""><img class="navbar-brand-img" src="/images/logistix_navbar_logo.png" alt="Logistix Inventory Text Logo"></a>
+      <a href="index.php" class=""><img class="navbar-brand-img" src="./images/logistix_navbar_logo.png" alt="Logistix Inventory Text Logo"></a>
       <!-- Float links to the right. Hide them on small screens -->
       <div class="w3-right w3-hide-small ">
         <!-- TODO: if-else for login / logout -->
