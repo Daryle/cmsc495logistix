@@ -1,10 +1,6 @@
 <?php
-
-// Include the required DBConnection information
-require_once('includes/Dbconnect.php');
-
-//include the userclass
-require_once('includes/FormObjects.php');
+require_once('includes/Dbconnect.php'); // Include the required DBConnection information
+require_once('includes/FormObjects.php'); //include the userclass
 
                                                 /*** Start of user management functions ***/
 
@@ -42,6 +38,7 @@ function verifylogin($username, $password)
                 header('Refresh: 1; URL = index.php');
     }
 }
+
 //if account is disabled
 function disabledAccMsg(){
     ?>
@@ -66,6 +63,7 @@ function updatePassword ()
     $mysqli->query("UPDATE users SET passWord = '$password', initAccess= '$initAccess' WHERE userName='$username'")
     or die($mysqli->error());
 }
+
 //count user before creating one to make sure no duplicates
 function countUser ($user)
 {        
@@ -76,11 +74,9 @@ function countUser ($user)
     // For Windows MYSQL String is case insensitive
     $Myquery = "SELECT count(*) as count from users where userName='$username'";
 
-    if ($result = $mysqli->query($Myquery)) 
-        {
+    if ($result = $mysqli->query($Myquery)) {
             /* Fetch the results of the query */         
-            while( $row = $result->fetch_assoc() )
-            {
+            while( $row = $result->fetch_assoc() ){
                 $count=$row["count"];                                             
             }    
             /* Destroy the result set and free the memory used for it */
@@ -130,7 +126,6 @@ function updateProfilePic(){
 
     $mysqli->query("UPDATE users SET image = '$image' WHERE userName='$username'") or die($mysqli->error);
 
-
     header("location: home.php");
 }}}
 
@@ -173,10 +168,11 @@ function selectAllMembers(){
                     <td><?php echo $access;?></td>
                     <td><?php echo $row['dateTime'];?></td>                  
                     <td>
-                       <a href="process.php?disable=<?php echo $row['userID'];?>"
-                          class="btn w3-button w3-black">Disable</a></td></tr>
+                       <a href="process.php?disable=<?php echo $row['userID'];?>" class="btn w3-button w3-black">Disable</a></td>
+                   </tr>
                 <?php endwhile; ?>                          
-</table></div><?php
+</table>
+</div><?php
 }
 
 //disables a user account
@@ -204,8 +200,7 @@ function initAdmin(){
     $sql = "SELECT initAccess, access from users WHERE userName='$user'";
     $result = $mysqli->query($sql);
          
-    if ($result->num_rows===1)
-    {
+    if ($result->num_rows===1) {
         $row = $result->fetch_array(MYSQLI_ASSOC);
 
         $initAdmin = $row['initAccess'];
