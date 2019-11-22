@@ -6,6 +6,8 @@ require_once('includes/Dbconnect.php');
 //include the userclass
 require_once('includes/FormObjects.php');
 
+                                                /*** Start of user management functions ***/
+
 //function of verification if user login is correct
 function verifylogin($username, $password)
 {
@@ -26,22 +28,21 @@ function verifylogin($username, $password)
         echo "<script>window.open('home.php','_self')</script>";       
         }else{
             ?>
-    <div class="w3-container logisTixContainerAlpha">
-    <div class= "w3-container w3-center logisTixBorderLineDGray">
-    <img class= "w3-center" src="images/logistixlogotrue.png" width="50%"><br>
-    <b><?php echo 'Invalid Entry';?></b>
-   </div></div><?php
-
+            <div class="w3-container logisTixContainerAlpha">
+            <div class= "w3-container w3-center logisTixBorderLineDGray">
+            <img class= "w3-center" src="images/logistixlogotrue.png" width="50%"><br>
+            <b><?php echo 'Invalid Entry';?></b>
+            </div></div><?php
             header('Refresh: 5; URL = index.php');
             }
         } }else{
-        echo "<br>";
-        echo "invalid entry";
-        echo "<br>";
-        header('Refresh: 1; URL = index.php');
+                echo "<br>";
+                echo "invalid entry";
+                echo "<br>";
+                header('Refresh: 1; URL = index.php');
     }
 }
-
+//if account is disabled
 function disabledAccMsg(){
     ?>
     <div class="w3-container logisTixContainerAlpha">
@@ -65,10 +66,9 @@ function updatePassword ()
     $mysqli->query("UPDATE users SET passWord = '$password', initAccess= '$initAccess' WHERE userName='$username'")
     or die($mysqli->error());
 }
-
+//count user before creating one to make sure no duplicates
 function countUser ($user)
 {        
-    // Connect to the database
     $mysqli = connectdb();
 
     $username = $user-> getUsername();
@@ -90,6 +90,7 @@ function countUser ($user)
             return $count;          
 }
 
+//create new user. default is regular member
 function createUser ($user)
   {
    // Connect to the database
@@ -116,6 +117,7 @@ function createUser ($user)
     return true;
     }
 
+//update profile pic
 function updateProfilePic(){
     $mysqli = connectdb();
     $username=$_SESSION['uname'];
@@ -132,6 +134,7 @@ function updateProfilePic(){
     header("location: home.php");
 }}}
 
+//shows profile pic
 function showProfilePic(){
     $mysqli = connectdb();
     $username=$_SESSION['uname'];
@@ -144,7 +147,8 @@ function showProfilePic(){
     echo $showPic;
 }
 
-  function selectAllMembers(){
+//to view all member in a list except the current user
+function selectAllMembers(){
     $mysqli = connectdb(); 
     $username = $_SESSION['uname'];
     $result =$mysqli->query("SELECT * from users where userName !='$username'");?>
@@ -175,6 +179,7 @@ function showProfilePic(){
 </table></div><?php
 }
 
+//disables a user account
 function disableAccount ()
 {
     // Connect to the database
@@ -190,6 +195,7 @@ function disableAccount ()
     header("location: home.php");
 }
 
+//if admin has not changed the password
 function initAdmin(){
     $mysqli = connectdb();
     $initAdmin ="";
@@ -213,6 +219,7 @@ function initAdmin(){
     }}}        
 }
 
+//if user is admin
 function isAdmin(){
     $mysqli = connectdb();
     $access = "";
@@ -232,6 +239,7 @@ function isAdmin(){
     }  
 }
 
+//if user is admin or member
 function isAdminMember(){
     $mysqli = connectdb();
     $access = "";
@@ -255,6 +263,7 @@ function isAdminMember(){
     }  
 }
 
+//function to verify access level and call sidenav display function
 function isAdminSide(){
     $mysqli = connectdb();
     $access = "";
@@ -277,6 +286,7 @@ function isAdminSide(){
     }  
 }
 
+//displays admin sidenav
 function isAdminSideDisplay(){
     ?>
     <div class="w3-container w3-bar-block">
@@ -290,48 +300,17 @@ function isAdminSideDisplay(){
   <?php
 }
 
+//display member sidenav
 function isMemberSideDisplay(){
     ?>
     <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="home.php" class="w3-bar-item w3-button w3-padding logistixBlueBack"><i class="fa fa-eye fa-fw"></i>  Overview</a>
+    <a href="home.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Overview</a>
     <a href="updateProfile.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-photo fa-fw"></i>  Profile Pic</a>
     <a href="changePassword.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>Change Password</a><br><br>
   </div>
   <?php
 }
-
-//End user management
-
-
-
-//Start product management
-
-//will insert product table and manufacturers table
-
-
-function indexShowProducts(){
-    $mysqli = connectdb();
-    $sql = "SELECT *, Timestamp(dateup) from products ORDER BY dateup DESC limit 4";
-    $result = $mysqli->query($sql);
-      
-    if ($result->num_rows===1)
-    {
-        $row = $result->fetch_array(MYSQLI_ASSOC);
-  }
-  ?><br><div class="w3-row-padding"><?php
-            /* Fetch the results of the query */       
-            while( $row = $result->fetch_assoc() )
-            {
-                $image = $row["PImage"];
-                $name = $row["PName"];
-   ?>
-  
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft logistixBlueBack w3-padding"><?php echo $name; ?></div>
-        <img src="<?php echo $image;?>" alt="<?php echo $name;?>" style="width:100%"></div></div><?php
-}}
 
 function idleKick(){
     $expireAfterSeconds = "";
@@ -367,5 +346,41 @@ function idleKick(){
 $_SESSION['last_action'] = time();
 
 }
+
+
+                                                /*** End of user management functions ***/
+
+
+
+/*** Start of product management functions ***/
+
+
+//shows the latest # products in index
+function indexShowProducts(){
+    $mysqli = connectdb();
+    $sql = "SELECT *, Timestamp(dateup) from products ORDER BY dateup DESC limit 4";
+    $result = $mysqli->query($sql);
+      
+    if ($result->num_rows===1)
+    {
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+  }
+  ?><br><div class="w3-row-padding"><?php
+            /* Fetch the results of the query */       
+            while( $row = $result->fetch_assoc() )
+            {
+                $image = $row["PImage"];
+                $name = $row["PName"];
+   ?>
+  
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft logistixBlueBack w3-padding"><?php echo $name; ?></div>
+        <img src="<?php echo $image;?>" alt="<?php echo $name;?>" style="width:100%"></div></div><?php
+}}
+
+
+
+/*** end of product management functions **/
 
 ?>
