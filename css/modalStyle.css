@@ -87,6 +87,23 @@ span.psw {
   border: 1px solid #888;
   width: 40%; /* Could be more or less, depending on screen size */
 }
+@media (min-width: 993px) {
+  .w3-modal-content {
+    width: 500px;
+  }
+}
+
+form {
+  padding: 20px 0;
+}
+
+.w3-modal {
+  padding-top: 50px;
+}
+
+.w3-container {
+  padding: 0 30px;
+}
 
 /* The Close Button (x) */
 .close {
