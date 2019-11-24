@@ -375,10 +375,7 @@ function indexShowProducts(){
       <div class="w3-display-container">
         <div class="w3-display-topleft logistixBlueBack w3-padding"><?php echo $name; ?></div>
         <img src="<?php echo $image;?>" alt="<?php echo $name;?>" style="width:100%"></div></div><?php
-}}
-
-
-
+ } ?> </div> <?php
+}
 /*** end of product management functions **/
-
 ?>
