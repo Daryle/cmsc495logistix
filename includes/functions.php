@@ -303,6 +303,7 @@ function isMemberSideDisplay(){
     <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="home.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Overview</a>
+    <a href="inventory.php" class="w3-bar-item w3-button w3-padding w3-mobile"><i class="fa fa-check fa-fw"></i>  Inventory</a>
     <a href="updateProfile.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-photo fa-fw"></i>  Profile Pic</a>
     <a href="changePassword.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>Change Password</a><br><br>
   </div>
