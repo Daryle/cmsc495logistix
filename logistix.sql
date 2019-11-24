@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 09, 2019 at 12:24 PM
+-- Generation Time: Nov 23, 2019 at 11:56 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.21
 
@@ -109,14 +109,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userID`, `firstName`, `lastName`, `userName`, `email`, `passWord`, `image`, `dateTime`, `access`, `failLog`, `initAccess`) VALUES
-(20, 'daryle', 'urrea', 'daryle', 'daryle@daryle.com', '$2y$10$an6IMzRyS94zOwyZ6puCS.2xzKRx94dKJLuE5ijZfdqpOHYvAE9ZO', NULL, NULL, 1, NULL, 1),
-(29, 'daryleStaff', 'urrea', 'daryleStaff', 'daryle@daryle.com', '$2y$10$mr66wW7jaQbuJZems53Oueyt5fMkaXmu3HQIctA833kBFAb8vGg0u', NULL, NULL, NULL, NULL, NULL),
-(33, 'Jella', 'An', 'JellaAdmin', 'Jella@jella.com', '$2y$10$l0eWFHBerEdka.Mhsvr7nuvr8MfMuBWXdHiKV2uxmJu5SjhRaPbR2', NULL, '2019-11-09 11:11:49', 1, 0, 0),
+(20, 'daryle', 'urrea', 'daryle', 'daryle@daryle.com', '$2y$10$0sW8GVydTZgacKglU8JXF.XYmnuIEAWJAyg/EZKXPNMQkdzHMJKGi', 'images/ironman.jpg', NULL, 1, NULL, 1),
+(29, 'daryleStaff', 'urrea', 'daryleStaff', 'daryle@daryle.com', '$2y$10$mr66wW7jaQbuJZems53Oueyt5fMkaXmu3HQIctA833kBFAb8vGg0u', NULL, '2019-11-19 19:28:50', 4, NULL, NULL),
+(33, 'Jella', 'An', 'JellaAdmin', 'Jella@jella.com', '$2y$10$CU7wqJudr.wQgPgXoS3mbu/bcf6sgCvvtPjFkK3YmX3fFUUHfM39O', NULL, '2019-11-09 11:11:49', 1, 0, 1),
 (34, 'Brandon', 'Elliott', 'BrandonAdmin', 'brandon@brandon.com', '$2y$10$C5cDW0GLmV8d/rGQ3f/quuVbWZB7PINBq./Av2OWjG05Tcytj4Zgi', NULL, '2019-11-09 11:12:52', 1, 0, 0),
 (35, 'Tom', 'Cress', 'TomAdmin', 'tom@tom.com', '$2y$10$qmBUAzXhf51IUHQ.vUx7auZ7cJe4QP5kjlTT8OryXrvF.SUcQ4T0y', NULL, '2019-11-09 11:13:44', 1, 0, 0),
-(36, 'Jella', 'An', 'Jella', 'jella@jella.com', '$2y$10$Ty7aUPiwMZh2.7BllyoUZeICcnuW0ascn6G/vokGpW3fkWf74vxNq', NULL, '2019-11-09 11:16:12', 0, 0, 1),
-(37, 'Tom', 'Cress', 'Tom', 'tom@tom.com', '$2y$10$MgFWWDi4N/FeeSMjYq4/B.thC/mpTchATZXMJqhtKFAY3PZ6Zdyyy', NULL, '2019-11-09 11:16:43', 0, 0, 1),
-(38, 'Brandon', 'Elliott', 'Bandon', 'brandon@brandon.com', '$2y$10$LTIOGKubFL2.35lNoD8mRe5.B9xHbVGHystqeSQWgspIxTRRhizKm', NULL, '2019-11-09 11:17:28', 0, 0, 1);
+(36, 'Jella', 'An', 'Jella', 'jella@jella.com', '$2y$10$Ty7aUPiwMZh2.7BllyoUZeICcnuW0ascn6G/vokGpW3fkWf74vxNq', NULL, '2019-11-19 10:05:22', 0, 0, 1),
+(37, 'Tom', 'Cress', 'Tom', 'tom@tom.com', '$2y$10$MgFWWDi4N/FeeSMjYq4/B.thC/mpTchATZXMJqhtKFAY3PZ6Zdyyy', NULL, '2019-11-18 22:55:37', 0, 0, 1),
+(38, 'Brandon', 'Elliott', 'Brandon', 'brandon@brandon.com', '$2y$10$LTIOGKubFL2.35lNoD8mRe5.B9xHbVGHystqeSQWgspIxTRRhizKm', NULL, '2019-11-18 22:55:42', 0, 0, 1),
+(39, 'daryle', 'urrea', 'daryleMember', 'daryle.daryle.com', '$2y$10$qxAX1X3lmDujB5YqtgR.FeVQKKooE130H4Pq/d4jRa/unisKFt2hK', NULL, '2019-11-19 16:38:44', 0, 0, 1),
+(40, 'Daryle', 'Urrea', 'daryleMember2', 'daryle.urrea@hotmail.com', '$2y$10$OklEMDyuGMR1llEiTFi3WuEsIHbgUymmyjlJveHHJLVvU2lJyfZyS', NULL, '2019-11-20 09:39:56', 4, 0, 1),
+(46, 'Daryle', 'Urrea', 'daryleMember3', 'daryle.urrea@hotmail.com', '$2y$10$Sdnz9PWXCASNG9f78iWHT.izVtYFhw2vY2HLwP/.2JkMZ2DlNw.5W', 'images/ironman.jpg', '2019-11-19 17:08:11', 0, 0, 1),
+(47, 'John', 'Doe', 'admin', 'Admin@logistix.com', '$2y$10$/pG83L2wsj1a./z5YhWmN.2d.XunxyL9P0vR9k/xQ1XGOQIxbhhKC', NULL, '2019-11-23 23:53:35', 1, 0, 0),
+(48, 'Jane', 'Doe', 'member', 'member@logistix.com', '$2y$10$uRUldYNEnCotyhaCQVKCzeRlc.MXkO5luIAxbBYUOXF2il6LmSICq', NULL, '2019-11-23 23:54:01', 0, 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -162,7 +167,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

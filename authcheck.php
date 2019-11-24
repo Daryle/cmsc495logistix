@@ -13,5 +13,6 @@ if (isset($_POST["uname"])) {
 } else {
     echo "<script>window.open('index.php','_self')</script>";
 }
+
+include 'header.php';
 ?>
-<html>

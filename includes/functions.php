@@ -32,10 +32,12 @@ function verifylogin($username, $password)
             header('Refresh: 5; URL = index.php');
             }
         } }else{
-                echo "<br>";
-                echo "invalid entry";
-                echo "<br>";
-                header('Refresh: 1; URL = index.php');
+           ?> <div class="w3-container logisTixContainerAlpha">
+            <div class= "w3-container w3-center logisTixBorderLineDGray">
+            <img class= "w3-center" src="images/logistixlogotrue.png" width="50%"><br>
+            <b><?php echo 'Invalid Entry';?></b>
+            </div></div><?php
+            header('Refresh: 5; URL = index.php');
     }
 }
 
