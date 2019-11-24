@@ -316,7 +316,7 @@ function idleKick(){
     
     //Expire the session if user is inactive for 30
     // 1 minute for testing try 60 for an hour.
-    $expireAfter = 360;
+    $expireAfter = 30;
  
     //Check to see if our "last action" session
     //variable has been set.
