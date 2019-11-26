@@ -369,16 +369,65 @@ function adminSidebar() // isAdminSideDisplay()
 
 //display member sidenav
 function memberSidebar() // isMemberSideDisplay()
-{
-    ?>
-    <div class="w3-bar-block">
-        <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-        <a href="home.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Overview</a>
-        <a href="inventory.php" class="w3-bar-item w3-button w3-padding w3-mobile"><i class="fa fa-check fa-fw"></i>  Inventory</a>
-        <a href="updateProfile.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-photo fa-fw"></i>  Profile Pic</a>
-        <a href="changePassword.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>Change Password</a><br><br>
-    </div>
-<?php
+{ ?>
+    <!-- Admin Sidebar -->
+    <ul class="sidebar navbar" id="accordionSidebar">
+        <!-- Divider -->
+        <hr class="sidebar-divider sidebar-top">
+
+        <!-- Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="home.php">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+            </a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Menu
+        </div>
+
+        <!-- Nav Item 1 - Inventory Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Inventory</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+            <div class="collapse-inner rounded">
+                <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+                <a class="collapse-item" href="">View Inventory</a>
+            </div>
+            </div>
+        </li>
+
+        <!-- Nav Item 3 - Account Settings Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAS" aria-expanded="false" aria-controls="collapseAS">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Account Settings</span>
+            </a>
+            <div id="collapseAS" class="collapse" aria-labelledby="headingAS" data-parent="#accordionSidebar" style="">
+            <div class="collapse-inner rounded">
+                <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+                <a class="collapse-item" href="updateProfile.php">Profile</a>
+                <a class="collapse-item" href="changePassword.php">Change password</a>
+            </div>
+            </div>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="sidebar-toggler">
+            <button class="rounded-circle" id="sidebarToggle"></button>
+        </div>
+    </ul>
+    <!-- End of Sidebar --> <?php
 }
 
 function idleKick()
