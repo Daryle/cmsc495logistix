@@ -4,7 +4,7 @@ require_once('./includes/functions.php');
 session_start();
 session_destroy();
 ?>
-<!-- <?php header('Refresh: 2; URL = index.php'); ?> -->
+<?php header('Refresh: 2; URL = index.php'); ?>
 <?php include 'header.php'; ?>
 <body style="min-height:100vh;">
     <div class="w3-container logisTixContainerAlpha">
