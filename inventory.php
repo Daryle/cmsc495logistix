@@ -56,7 +56,7 @@ idleKick();
 
       <!-- Page Content -->
       <div id="content" class="container-fluid" style="">
-        <h1 class="">Dashboard</h1>
+        <h1 class="">Inventory</h1>
         <div class="w3-container w3-row">
           <div class="w3-col  w3-third">
             <img src="<?php echo showProfilePic(); ?>" class="w3-circle w3-margin-right" style="width:60px">
@@ -73,18 +73,11 @@ idleKick();
           </div>
         </div>
         <div style="padding: 22px 0;">
-<!--            
-          <?php // if (isAdmin()) { ?>
-              <h5><b><i class="fa fa-users w3-medium"></i> Edit Staff Members</b></h5>
-            <?php // displayAllUsers();
-//          } else { } ?>
-              -->
-              
               <?php selectAllProduct(); ?>
-        
-      
+        </div>
+      </div>
       <!-- End of Page Content -->
-    
+    </div>
     <!-- End of Page Content Wrapper -->
   </div>
   <!-- End of Wrapper -->

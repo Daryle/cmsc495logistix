@@ -38,7 +38,7 @@ idleKick();
             </a>
             <a class="dropdown-item" href="#">
               <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-              Access level : 
+              Access level :
               <?php displayAccessLevel(); ?>
             </a>
             <hr style="margin: .25rem 1.5rem;">
@@ -69,7 +69,6 @@ idleKick();
       <!-- Page Content -->
       <div id="content" class="container-fluid" style="">
         <h1 class="">Dashboard</h1>
-<<<<<<< HEAD
         <div class="w3-container w3-row">
           <div class="w3-col  w3-third">
             <img src="<?php echo showProfilePic(); ?>" class="w3-circle w3-margin-right" style="width:60px">
@@ -79,32 +78,17 @@ idleKick();
             <span>Today is: <strong><?php echo date("m-d-y"); ?></strong></span><br>
             <span>Access Level: <strong><?php displayAccessLevel(); ?></strong></span><br>
           </div>
-           <div class="w3-col  w3-third">
-               <span>Out of Stock: <strong><?php echo outOfStock(); ?></strong></span><br>
-               <span>Total Stocks: <strong><?php echo totalStocks(); ?></strong></span><br>
-               <span>Total Manufacturers: <strong><?php echo totalManufacturer(); ?></strong></span><br>
+          <div class="w3-col  w3-third">
+            <span>Out of Stock: <strong><?php echo outOfStock(); ?></strong></span><br>
+            <span>Total Stocks: <strong><?php echo totalStocks(); ?></strong></span><br>
+            <span>Total Manufacturers: <strong><?php echo totalManufacturer(); ?></strong></span><br>
           </div>
         </div>
         <div style="padding: 22px 0;">
-<!--            
-          <?php // if (isAdmin()) { ?>
-              <h5><b><i class="fa fa-users w3-medium"></i> Edit Staff Members</b></h5>
-            <?php // displayAllUsers();
-//          } else { } ?>
-              -->
-              
-              <?php limitShow(); ?>
-        
-      
-=======
-        <div style="padding: 22px 0;">
-          <?php if (isAdmin()) { ?>
-            <h5><b><i class="fa fa-users w3-medium"></i> Edit Staff Members</b></h5>
-          <?php displayAllUsers();
-          } else { } ?>
+          <?php limitShow(); ?>
         </div>
+        
       </div>
->>>>>>> new-style
       <!-- End of Page Content -->
     </div>
     <!-- End of Page Content Wrapper -->
