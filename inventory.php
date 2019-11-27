@@ -80,11 +80,11 @@ idleKick();
 //          } else { } ?>
               -->
               
-              <?php limitShow(); ?>
+              <?php selectAllProduct(); ?>
         
       
       <!-- End of Page Content -->
-    </div>
+    
     <!-- End of Page Content Wrapper -->
   </div>
   <!-- End of Wrapper -->
