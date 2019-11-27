@@ -196,7 +196,7 @@ function disableAccount()
     $mysqli->query("UPDATE users SET access = '$disableAccess', dateTime= '$disableDate' WHERE userID='$userid'")
         or die($mysqli->error());
 
-    header("location: home.php");
+    header("location: editMember.php");
 }
 
 //if admin has not changed the password
@@ -298,9 +298,10 @@ function adminSidebar() // isAdminSideDisplay()
 
         <!-- Dashboard -->
         <li class="nav-item active">
+            
             <a class="nav-link" href="home.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
+            <span><?php displayAccessLevel();?></span>
             </a>
         </li>
 
@@ -321,7 +322,7 @@ function adminSidebar() // isAdminSideDisplay()
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
             <div class="collapse-inner rounded">
                 <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-                <a class="collapse-item" href="inventory.php">View Inventory</a>
+                <a class="collapse-item" href="inventory.php">Edit Inventory</a>
             </div>
             </div>
         </li>
@@ -336,7 +337,7 @@ function adminSidebar() // isAdminSideDisplay()
             <div class="collapse-inner rounded">
                 <!-- <h6 class="collapse-header">Custom Components:</h6> -->
                 <a class="collapse-item" href="addStaff.php">Add new account</a>
-                <a class="collapse-item" href="#">Edit acccount</a>
+                <a class="collapse-item" href="editMember.php">Edit acccount</a>
                 <a class="collapse-item" href="#">Aduit System</a>
             </div>
             </div>
@@ -429,6 +430,43 @@ function memberSidebar() // isMemberSideDisplay()
     </ul>
     <!-- End of Sidebar --> <?php
 }
+    //member display is paginated
+    function paginateMemberDisplay(){
+         $mysqli = connectdb();
+         $username = $_SESSION['uname'];
+         $page = (int) (!isset($_GET["page"]) ? 1 : $_GET["page"]);
+         $limit = 4;
+         $startpoint = ($page * $limit) - $limit;       
+         $statement ="";        
+         $result =$mysqli->query("SELECT * from users  where userName !='$username' LIMIT $limit OFFSET $startpoint");?>                                                     
+           
+            <table class="w3-table w3-striped w3-white">
+                <thead class= "logistixBlueBack"><tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Status</th>
+                        <th>Date of Status</th>
+                        <th colspan="2">Action</th>
+                    </tr> </thead> <?php 
+            while($row = $result->fetch_assoc()): 
+                if ($row['access']==4){
+                $access = "Disabled";
+                } else{
+                    $access = "Active";
+                }
+                ?>
+                <tr><td><?php echo $row['userID'];?></td>
+                    <td><?php echo $row['userName'];?></td>
+                    <td><?php echo $access;?></td>
+                    <td><?php echo $row['dateTime'];?></td>                  
+                    <td>
+                       <a href="process.php?disable=<?php echo $row['userID'];?>" class="btn w3-button w3-black">Disable</a></td>
+                   </tr>
+                <?php endwhile; ?>                             
+</table>
+           <?php echo pagination($statement, $limit, $page); ?>
+<?php
+}
 
 function idleKick()
 {
@@ -465,6 +503,21 @@ function idleKick()
     $_SESSION['last_action'] = time();
 }
 
+function selectUserId(){
+        // Connect to the database
+    $mysqli = connectdb();
+    $user= $_SESSION['uname'];
+    // Define the Query
+    // For Windows MYSQL String is case insensitive
+    $result = $mysqli->query("SELECT userID from users where userName='$user'");
+    
+            /* Fetch the results of the query */         
+            while( $row = $result->fetch_assoc()){
+                $user_id = $row['userID'];                
+            }  
+           return $user_id;        
+}
+
 /*** End of user management functions ***/
 
 /*** Start of product management functions ***/
@@ -473,7 +526,7 @@ function idleKick()
 function indexShowProducts()
 {
     $mysqli = connectdb();
-    $sql = "SELECT *, Timestamp(dateup) from products ORDER BY dateup DESC limit 4";
+    $sql = "SELECT *, Timestamp(dateup) from products ORDER BY dateup DESC limit 8";
     $result = $mysqli->query($sql);
 
     if ($result->num_rows === 1) {
@@ -489,7 +542,7 @@ function indexShowProducts()
         <div class="w3-col l3 m6 w3-margin-bottom">
             <div class="w3-display-container">
                 <div class="w3-display-topleft logistixBlueBack w3-padding"><?php echo $name; ?></div>
-                <img src="<?php echo $image; ?>" alt="<?php echo $name; ?>" style="width:100%">
+                <img src="<?php echo $image; ?>" class="w3-margin w3-padding" alt="<?php echo $name; ?>" style="object-fit: cover" width="300px" height="300px"">
             </div>
         </div><?php
         } ?> </div> <?php
@@ -647,5 +700,76 @@ function totalStocks(){
     $mysqli->close();   
     return $count;          
 }
+
+function deleteProduct(){
+    $mysqli = connectdb();
+    $id = $_GET['delete'];
+    
+    $mysqli->query("DELETE FROM products WHERE ID=$id") or die($mysqli->error());
+
+    $_SESSION['message'] = "Record has been delete";
+    $_SESSION['msg_type'] = "danger";
+
+    header("location: inventory.php");
+}
+
+function insertProduct(){
+   
+    $mysqli = connectdb();
+    $name = $_POST['name'];
+    $manufacturer= $_POST['manufacturer'];
+    $desc = $_POST['desc'];
+    $qty = $_POST['qty'];
+    $datum = new DateTime();
+    $startTime = $datum->format('Y-m-d H:i:s');
+    $userId= selectUserId();
+    $result="";
+    $image='images/' .$_FILES['image']['name'];
+    $image= mysqli_real_escape_string($mysqli, $image);
+    
+    if(countManu()==0){
+    $mysqli->query("INSERT INTO manufacturer (name) VALUES ('$manufacturer')");
+
+    if(preg_match("!image!", $_FILES['image']['type'])){
+       if(copy($_FILES['image']['tmp_name'], $image)){
+
+    $mysqli->query("INSERT INTO products (user_id, manu_id, PName, PManu,PDesc, qty, PImage, dateup) 
+        VALUES('selectUserId()','".mysqli_insert_id($mysqli)."','$name','$manufacturer','$desc','$qty','$image','$startTime')") or die($mysqli->error);
+    header("location: inventory.php");
+        }}}else{
+        $result = $mysqli->query("SELECT id from manufacturer WHERE name='$manufacturer'");
+        while($row = $result->fetch_assoc()){
+            $manu_id = $row['id'];
+            
+    $mysqli->query("INSERT INTO products (user_id, manu_id, PName, PManu,PDesc, qty, PImage, dateup) 
+        VALUES('$userId','$manu_id','$name','$manufacturer','$desc','$qty','$image','$startTime')") or die($mysqli->error);
+    header("location: inventory.php");
+    }}}
+    
+    function countManu (){        
+    // Connect to the database
+    $mysqli = connectdb();
+
+    $manufacturer= $_POST['manufacturer'];
+    // Define the Query
+    // For Windows MYSQL String is case insensitive
+    $Myquery = "SELECT count(*) as count from manufacturer where name='$manufacturer'";
+
+    if ($result = $mysqli->query($Myquery)) 
+        {
+            /* Fetch the results of the query */         
+            while( $row = $result->fetch_assoc() )
+            {
+                $count = $row["count"]; 
+                echo $count;                                            
+            }    
+            /* Destroy the result set and free the memory used for it */
+            $result->close();         
+        }   
+            $mysqli->close();   
+            // return $count;
+            return $count;          
+}
+
 /*** end of product management functions **/
 ?>

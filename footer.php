@@ -1,6 +1,6 @@
 <!-- Footer -->
-<footer class="w3-center w3-padding-16">
-    <p>Project by UMUC | CMSC 495 | TEAM 1</p>
+<footer class="w3-center w3-padding-16 ">
+    <p>Project by UMGC | CMSC 495 | TEAM 1</p>
 </footer>
 
 </body>

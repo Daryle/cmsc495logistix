@@ -26,7 +26,7 @@ initAdmin();
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="user-greetings">Good Day,</span>
             <span class="user-name"><?php echo $_SESSION['uname']; ?></span>
-            <img class="user-topbar-img" src="" alt="">
+            <img class="user-topbar-img" src="<?php showProfilePic(); ?>" alt="">
           </a>
           <!-- Dropdown Menu -->
           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -59,7 +59,7 @@ initAdmin();
         <h1 class="">Profile</h1>
         <div class="w3-container w3-row">
           <div class="w3-col s4">
-            <img src="images/ironman2.jpg" class="w3-circle w3-margin-right" style="width:50px">
+            <img src="images/ironman2.jpg" class="w3-circle w3-margin-right" style="width:60px">
           </div>
           <div class="w3-col s8 w3-bar">
             <span>Welcome, <strong><?php echo $_SESSION['uname']; ?></strong></span><br>
@@ -73,7 +73,7 @@ initAdmin();
           <h5><b><i class="fa fa-cog"></i> Update Profile Picture</b></h5>
           <div class="w3-third">
             <h5><?php echo $name; ?></h5>
-            <img src="<?php echo showProfilePic(); ?>" style="width:100%" alt="Google Regional Map">
+            <img src="<?php echo showProfilePic(); ?>"  style="object-fit: cover" width="200px" height="200px" alt="Profile Pic">
           </div>
           <div class="w3-twothird">
             <div class="row justify-content-center">
