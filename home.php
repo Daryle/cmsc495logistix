@@ -2,13 +2,14 @@
 require_once('includes/functions.php');
 require_once('process.php');
 
-if(!isset($_SESSION['uname'])) {    
+if (!isset($_SESSION['uname'])) {
   echo "<script>window.open('index.php','_self')</script>";
-} else {  }
+} else { }
 initAdmin();
 idleKick();
 ?>
 <?php include 'header.php'; ?>
+
 <body id="page-top" cz-shortcut-listen="true" class="">
   <!-- Main Content -->
   <div id="wrapper">
@@ -26,10 +27,21 @@ idleKick();
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="user-greetings">Good Day,</span>
             <span class="user-name"><?php echo $_SESSION['uname']; ?></span>
-            <img class="user-topbar-img" src="" alt="">
+            <img class="user-topbar-img" src="images/ironman2.jpg" alt="">
           </a>
           <!-- Dropdown Menu -->
           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+              Last sign on :<br>
+              <?php echo $_SESSION['dateTime']; ?>
+            </a>
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+              Access level : 
+              <?php displayAccessLevel(); ?>
+            </a>
+            <hr style="margin: .25rem 1.5rem;">
             <a class="dropdown-item" href="#">
               <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
               Profile
@@ -51,26 +63,16 @@ idleKick();
     <!-- Page Content Wrapper-->
     <div id="content-wrapper" class="d-flex">
       <!-- Sidebar -->
-      <?php displaySidebar();?>
+      <?php displaySidebar(); ?>
       <!-- End of Sidebar -->
 
       <!-- Page Content -->
       <div id="content" class="container-fluid" style="">
         <h1 class="">Dashboard</h1>
-        <div class="w3-container w3-row">
-          <div class="w3-col s4">
-            <img src="images/ironman2.jpg" class="w3-circle w3-margin-right" style="width:50px">
-          </div>
-          <div class="w3-col s8 w3-bar">
-            <span>Welcome, <strong><?php echo $_SESSION['uname']; ?></strong></span><br>
-            <span>Today is: <strong><?php echo date("m-d-y"); ?></strong></span><br>
-            <span>Access Level: <strong><?php displayAccessLevel(); ?></strong></span><br>
-          </div>
-        </div>
         <div style="padding: 22px 0;">
           <?php if (isAdmin()) { ?>
-              <h5><b><i class="fa fa-users w3-medium"></i> Edit Staff Members</b></h5>
-            <?php displayAllUsers();
+            <h5><b><i class="fa fa-users w3-medium"></i> Edit Staff Members</b></h5>
+          <?php displayAllUsers();
           } else { } ?>
         </div>
       </div>
