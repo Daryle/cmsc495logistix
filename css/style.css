@@ -354,7 +354,7 @@ ul {
 
 .sidebar {
   background-color: #003B5C;
-  /* background-image: linear-gradient(180deg, white 50%,#E88713 100%); */
+  background-image: linear-gradient(180deg,#003B5C 10%,#002031  100%);
   min-height: 100vh;
 }
 
@@ -914,4 +914,14 @@ a {
   margin-right: auto;
   margin-left: auto;
   color: #858796;
+}
+
+footer{
+  color: white;
+  background-color: #002031;
+} 
+
+#home footer {
+  color: #858796;
+  background-color:white;
 }

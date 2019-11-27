@@ -2,12 +2,13 @@
 require_once('includes/functions.php');
 require_once('process.php');
 
-if(!isset($_SESSION['uname'])) {
+if (!isset($_SESSION['uname'])) {
   echo "<script>window.open('index.php','_self')</script>";
-} else { } 
-idleKick(); 
+} else { }
+idleKick();
 ?>
 <?php include 'header.php'; ?>
+
 <body id="page-top" cz-shortcut-listen="true" class="">
   <!-- Main Content -->
   <div id="wrapper">
@@ -31,6 +32,17 @@ idleKick();
           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">
               <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+              Last sign on :<br>
+              <?php echo $_SESSION['dateTime']; ?>
+            </a>
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+              Access level :<br>
+              <?php displayAccessLevel(); ?>
+            </a>
+            <hr style="margin: .25rem 1.5rem;">
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
               Profile
             </a>
             <a class="dropdown-item" href="#">
@@ -50,7 +62,7 @@ idleKick();
     <div id="content-wrapper" class="d-flex">
 
       <!-- Sidebar -->
-      <?php displaySidebar();?>
+      <?php displaySidebar(); ?>
       <!-- End of Sidebar -->
 
       <!-- Page Content -->
@@ -67,14 +79,14 @@ idleKick();
           </div>
         </div>
         <div style="padding: 22px 0;">
-              <h5><b><i class="fa fa-cog"></i> Change Password</b></h5>
-              <form class="modal-content animate" name="register" method="POST" action="updatePass.php">
-                <input type="hidden" name="uname" value="<?php echo $_SESSION['uname']; ?>" readonly>
-                <input type="password" placeholder="Enter Password" name="pword" required><br><br>
-                <button type="submit" name="submit" class="w3-button logistixBlueBack">Update Password</button>
-              </form>
+          <h5><b><i class="fa fa-cog"></i> Change Password</b></h5>
+          <form class="modal-content animate" name="register" method="POST" action="updatePass.php">
+            <input type="hidden" name="uname" value="<?php echo $_SESSION['uname']; ?>" readonly>
+            <input type="password" placeholder="Enter Password" name="pword" required><br><br>
+            <button type="submit" name="submit" class="w3-button logistixBlueBack">Update Password</button>
+          </form>
         </div>
-        
+
       </div>
       <!-- End of Page Content -->
     </div>
