@@ -240,7 +240,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
     color: #246EB5 !important;
 }
 .logistixBlueBack{
-    background-color: #246EB5 !important;
+    background-color: #003B5C !important;
     color: white;
 }
 
@@ -255,7 +255,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 }
 
 .logistixRedBack {
-    background-color:#ff5722  !important;
+    background-color: maroon  !important;
     color: white !important;
 }
 
@@ -353,7 +353,7 @@ ul {
 }
 
 .sidebar {
-  background-color: #F3969A;
+  background-color: #003B5C;
   /* background-image: linear-gradient(180deg, white 50%,#E88713 100%); */
   min-height: 100vh;
 }

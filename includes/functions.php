@@ -1,7 +1,7 @@
 <?php
 require_once('includes/Dbconnect.php'); // Include the required DBConnection information
 require_once('includes/FormObjects.php'); //include the userclass
-
+require_once ('./paginate.php');
 /*** Start of user management functions ***/
 
 //function of verification if user login is correct
@@ -321,7 +321,7 @@ function adminSidebar() // isAdminSideDisplay()
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
             <div class="collapse-inner rounded">
                 <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-                <a class="collapse-item" href="">View Inventory</a>
+                <a class="collapse-item" href="inventory.php">View Inventory</a>
             </div>
             </div>
         </li>
@@ -493,6 +493,148 @@ function indexShowProducts()
             </div>
         </div><?php
         } ?> </div> <?php
+}
+
+function selectAllProduct(){
+    $mysqli = connectdb();    
+    $result =$mysqli->query("SELECT * from products");?>
+            <div class ="w3-container">
+            <table class="w3-table w3-striped w3-white">
+                <thead class= "logistixBlueBack"><tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th colspan="2">Action</th>
+                    </tr> </thead> <?php 
+            while($row = $result->fetch_assoc()): ?>
+                <tr><td><?php echo $row['PName'];?></td>
+                    <td><?php echo $row['PDesc'];?></td>
+                    <td><?php echo $row['qty'];?></td>
+                    <td><a href="addProduct.php?edit=<?php echo $row['ID'];?>"
+                          class="w3-button logistixBlueBack">Edit</a>
+                <?php if (isAdmin()){ ?>                        
+                       <a href="process.php?delete=<?php echo $row['ID'];?>"
+                          class="w3-button" style="background-color: maroon; color: white">Delete</a></td></tr>
+                <?php }?>
+                <?php endwhile; ?>                          
+</table></div><?php }
+
+function showAllProduct(){
+    $mysqli = connectdb();    
+    $result =$mysqli->query("SELECT * from products");?>
+            <div class ="w3-container">
+            <table class="w3-table w3-striped w3-white">
+                <thead class= "logistixBlueBack"><tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Quantity</th>                        
+                    </tr> </thead> <?php 
+            while($row = $result->fetch_assoc()): ?>
+                <tr><td><?php echo $row['PName'];?></td>
+                    <td><?php echo $row['PDesc'];?></td>
+                    <td><?php echo $row['qty'];?></td>
+                <?php endwhile; ?>                          
+</table></div><?php
+
+}
+
+function updateProducts(){
+    $mysqli = connectdb();
+    $id =$_POST['id'];
+    $name =$_POST['name'];
+    $desc =$_POST['desc'];
+    $qty = $_POST['qty'];
+
+    $mysqli->query("UPDATE products SET PName='$name', PDesc='$desc', qty='$qty' WHERE ID=$id")or die($mysqli->error());
+
+    $_SESSION['message'] = "Record has been updated";
+    $_SESSION['msg_type'] = "warning";
+
+    header("location: inventory.php");        
+}
+
+//count item out of stock
+function outOfStock(){     
+    $mysqli = connectdb();
+
+    $Myquery = "SELECT count(*) as count from products where qty='0'";
+
+    if ($result = $mysqli->query($Myquery)) {
+            /* Fetch the results of the query */         
+            while( $row = $result->fetch_assoc() ){
+                $count=$row["count"];                                             
+            }    
+            /* Destroy the result set and free the memory used for it */
+            $result->close();         
+        }   
+            $mysqli->close();   
+            return $count;             
+}
+
+function totalManufacturer(){     
+    $mysqli = connectdb();
+
+
+    $Myquery = "SELECT count(*) as count from manufacturer";
+
+    if ($result = $mysqli->query($Myquery)) {
+            /* Fetch the results of the query */         
+            while( $row = $result->fetch_assoc() ){
+                $count=$row["count"];                                             
+            }    
+            /* Destroy the result set and free the memory used for it */
+            $result->close();         
+        }   
+            $mysqli->close();   
+            return $count;             
+}
+ function limitShow(){
+         $mysqli = connectdb();
+         
+         $page = (int) (!isset($_GET["page"]) ? 1 : $_GET["page"]);
+         $limit = 10;
+         $startpoint = ($page * $limit) - $limit;       
+         $statement ="table1 order by name asc";        
+         $result =$mysqli->query("SELECT * from products  LIMIT $limit OFFSET $startpoint");
+         ?>                
+
+            <div class ="w3-container">
+                         <div id='paging'>
+        <?php echo pagination($statement, $limit, $page); ?>
+             
+         </div>
+            <table class="w3-table w3-striped w3-white">
+                <thead class= "logistixBlueBack"><tr>
+                        <th>ID</th>
+                        <th>Name</th>                     
+                        <th>Description</th>
+                        <th>Quantity</th>                        
+                    </tr> </thead> <?php 
+            while($row = $result->fetch_assoc()): ?>
+                <tr><td><?php echo $row['ID'];?></td>
+                    <td><?php echo $row['PName'];?></td>                
+                    <td><?php echo $row['PDesc'];?></td>
+                    <td><?php echo $row['qty'];?></td>
+                <?php endwhile; ?>                          
+</table></div>
+<?php
+}
+
+function totalStocks(){     
+    $mysqli = connectdb();
+
+    $Myquery = "SELECT sum(qty) as count from products";
+
+    if ($result = $mysqli->query($Myquery)) {
+            /* Fetch the results of the query */         
+            while( $row = $result->fetch_assoc() ){
+                $count=$row["count"];                                             
+            }    
+            /* Destroy the result set and free the memory used for it */
+            $result->close();         
+        }   
+            $mysqli->close();   
+            return $count;          
 }
 /*** end of product management functions **/
 ?>
