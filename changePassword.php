@@ -18,8 +18,8 @@ idleKick();
       <ul class="navbar navbar-user">
         <!-- Nav Item - Brand Logo -->
         <li class="nav-item brand">
-          <a class="sidebar-logo" href="home.php"><img class="navbar-brand-img sidebar-logo" src="/images/logistix_navbar_logo.png" alt="Logistix Logo"></a>
-          <a class="sidebar-logo-single" href="home.php"><img class="sidebar-logo-single" src="/images/logoNoText.png" alt="Logistix Logo"></a>
+          <a class="sidebar-logo" href="home.php"><img class="navbar-brand-img sidebar-logo" src="./images/logistix_navbar_logo.png" alt="Logistix Logo"></a>
+          <a class="sidebar-logo-single" href="home.php"><img class="sidebar-logo-single" src="./images/logoNoText.png" alt="Logistix Logo"></a>
         </li>
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown">
