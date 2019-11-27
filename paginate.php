@@ -21,13 +21,13 @@ function pagination($query, $per_page = '', $page = 1, $url = '?')
 	$pagination = "";
 
 	if ($lastpage > 1) {
-		$pagination .= "<div class='w3-bar' style='margin-top:2px'> Page $page of $lastpage  </h5></b></header><br><br>";
+		$pagination .= "<div style='text-align:center; margin-top:1rem;'> Page $page of $lastpage <br>";
 		if ($lastpage < 7 + ($adjacents * 2)) {
 			for ($counter = 1; $counter <= $lastpage; $counter++) {
 				if ($counter == $page)
-					$pagination .= "<a class='current w3-button w3-black'>$counter &nbsp</a>";
+					$pagination .= "<a class='current w3-button w3-black'>$counter</a>";
 				else
-					$pagination .= "<a  href='{$url}page=$counter' class='w3-button w3-black'>&nbsp$counter&nbsp&nbsp</a>";
+					$pagination .= "<a href='{$url}page=$counter' class='w3-button w3-black'>$counter</a>";
 			}
 		} elseif ($lastpage > 5 + ($adjacents * 2)) {
 			if ($page < 1 + ($adjacents * 2)) {
@@ -37,20 +37,20 @@ function pagination($query, $per_page = '', $page = 1, $url = '?')
 					else
 						$pagination .= "<a href='{$url}page=$counter'>$counter</a>";
 				}
-				$pagination .= "<class='dot'>...";
+				$pagination .= "<li class='dot'>..</li>";
 				$pagination .= "<a href='{$url}page=$lpm1'>$lpm1</a>";
 				$pagination .= "<a href='{$url}page=$lastpage'>$lastpage</a>";
 			} elseif ($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2)) {
 				$pagination .= "<a href='{$url}page=1'>1</a>";
 				$pagination .= "<a href='{$url}page=2'>2</a>";
-				$pagination .= " class='dot'>...";
+				$pagination .= "<li class='dot'>..</li>";
 				for ($counter = $page - $adjacents; $counter <= $page + $adjacents; $counter++) {
 					if ($counter == $page)
 						$pagination .= "<li><a class='current'>$counter</a>";
 					else
 						$pagination .= "<li><a href='{$url}page=$counter'>$counter</a>";
 				}
-				$pagination .= "<class='dot'>..</li>";
+				$pagination .= "<li class='dot'>..</li>";
 				$pagination .= "<a href='{$url}page=$lpm1'>$lpm1</a>";
 				$pagination .= "<a href='{$url}page=$lastpage'>$lastpage</a>";
 			} else {

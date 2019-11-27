@@ -607,10 +607,7 @@ function totalManufacturer() {
     $startpoint = ($page * $limit) - $limit;       
     $statement ="table1 order by name asc";        
     $result =$mysqli->query("SELECT * from products  LIMIT $limit OFFSET $startpoint"); ?>                
-    
-    <div id='paging'>
-         <?php echo pagination($statement, $limit, $page); ?>
-    </div>
+
     <table class="w3-table w3-striped w3-white">
         <thead class= "logistixBlueBack">
             <tr>
@@ -628,7 +625,10 @@ function totalManufacturer() {
                 <td><?php echo $row['qty'];?></td>
             </tr>
         <?php endwhile; ?>                          
-    </table> <?php
+    </table> 
+    <div id='paging'>
+         <?php echo pagination($statement, $limit, $page); ?>
+    </div><?php
 }
 
 function totalStocks(){     
