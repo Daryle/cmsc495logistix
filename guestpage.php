@@ -42,7 +42,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
-        <img src="images/ironman2.jpg" class="w3-circle w3-margin-right" style="width:50px">       
+        <img src="images/defaultPic.jpg" class="w3-circle w3-margin-right" style="width:60px">       
     </div>
       <div class="">         
     <div class="w3-col s8 w3-bar">
@@ -77,7 +77,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <h5>List of Inventory &nbsp&nbsp</h5> 
 
     <!--This starts inventory list-->
-
+<?php    showAllProduct(); ?>
   <!-- end of inventory list-->  
 
   <!-- Footer -->
