@@ -6,7 +6,7 @@
     <div class="w3-bar w3-white w3-wide w3-padding w3-card">
       <a href="index.php" class=""><img class="navbar-brand-img" src="./images/logistix_navbar_logo.png" alt="Logistix Inventory Text Logo"></a>
       <!-- Float links to the right. Hide them on small screens -->
-      <div class="w3-right w3-hide-small ">
+      <div class="w3-right">
         <!-- TODO: if-else for login / logout -->
         <a onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button ">Login</a>
         <!-- TODO: if-else for Continue as guest / None -->
