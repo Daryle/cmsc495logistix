@@ -27,7 +27,7 @@ idleKick();
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="user-greetings">Good Day,</span>
             <span class="user-name"><?php echo $_SESSION['uname']; ?></span>
-            <img class="user-topbar-img" src="images/ironman2.jpg" alt="">
+            <img class="user-topbar-img" src="<?php showProfilePic(); ?>" alt="">
           </a>
           <!-- Dropdown Menu -->
           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -81,7 +81,7 @@ idleKick();
           <div class="w3-col  w3-third">
             <span>Out of Stock: <strong><?php echo outOfStock(); ?></strong></span><br>
             <span>Total Stocks: <strong><?php echo totalStocks(); ?></strong></span><br>
-            <span>Total Manufacturers: <strong><?php echo totalManufacturer(); ?></strong></span><br>
+            <span>Total Users: <strong><?php echo numberOfMember(); ?></strong></span><br>
           </div>
         </div>
         <div style="padding: 22px 0;">

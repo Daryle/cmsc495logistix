@@ -69,7 +69,7 @@ idleKick();
            <div class="w3-col  w3-third">
                <span>Out of Stock: <strong><?php echo outOfStock(); ?></strong></span><br>
                <span>Total Stocks: <strong><?php echo totalStocks(); ?></strong></span><br>
-               <span>Total Manufacturers: <strong><?php echo totalManufacturer(); ?></strong></span><br>
+               <span>Total Users: <strong><?php echo numberOfMember(); ?></strong></span><br>
           </div>
            
         </div>

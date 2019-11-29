@@ -401,7 +401,7 @@ function memberSidebar() // isMemberSideDisplay()
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
             <div class="collapse-inner rounded">
                 <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-                <a class="collapse-item" href="">View Inventory</a>
+                <a class="collapse-item" href="inventory.php">Edit Inventory</a>
             </div>
             </div>
         </li>
@@ -771,5 +771,22 @@ function insertProduct(){
             return $count;          
 }
 
+//count item out of stock
+function numberOfMember(){     
+    $mysqli = connectdb();
+
+    $Myquery = "SELECT count(*) as count from users";
+
+    if ($result = $mysqli->query($Myquery)) {
+            /* Fetch the results of the query */         
+            while( $row = $result->fetch_assoc() ){
+                $count=$row["count"];                                             
+            }    
+            /* Destroy the result set and free the memory used for it */
+            $result->close();         
+        }   
+            $mysqli->close();   
+            return $count;             
+}
 /*** end of product management functions **/
 ?>
