@@ -62,7 +62,7 @@ idleKick();
         <h1 class="">Add new account</h1>
         <div class="w3-container w3-row">
           <div class="w3-col s4">
-            <img src="images/ironman2.jpg" class="w3-circle w3-margin-right" style="width:60px">
+              <img src="<?php echo showProfilePic(); ?>" class="w3-circle w3-margin-right" style="width:60px">
           </div>
           <div class="w3-col s8 w3-bar">
             <span>Welcome, <strong><?php echo $_SESSION['uname']; ?></strong></span><br>
