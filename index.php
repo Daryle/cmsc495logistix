@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
 
-<body id="page-top" cz-shortcut-listen="true">
+<body id="index" cz-shortcut-listen="true">
   <!-- Navbar (sit on top) -->
   <div class="w3-top">
     <div class="w3-bar w3-white w3-wide w3-padding w3-card">

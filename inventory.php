@@ -2,13 +2,14 @@
 require_once('includes/functions.php');
 require_once('process.php');
 
-if(!isset($_SESSION['uname'])) {    
+if (!isset($_SESSION['uname'])) {
   echo "<script>window.open('index.php','_self')</script>";
-} else {  }
+} else { }
 initAdmin();
 idleKick();
 ?>
 <?php include 'header.php'; ?>
+
 <body id="page-top" cz-shortcut-listen="true" class="">
   <!-- Main Content -->
   <div id="wrapper">
@@ -51,7 +52,7 @@ idleKick();
     <!-- Page Content Wrapper-->
     <div id="content-wrapper" class="d-flex">
       <!-- Sidebar -->
-      <?php displaySidebar();?>
+      <?php displaySidebar(); ?>
       <!-- End of Sidebar -->
 
       <!-- Page Content -->
@@ -66,24 +67,23 @@ idleKick();
             <span>Today is: <strong><?php echo date("m-d-y"); ?></strong></span><br>
             <span>Access Level: <strong><?php displayAccessLevel(); ?></strong></span><br>
           </div>
-           <div class="w3-col  w3-third">
-               <span>Out of Stock: <strong><?php echo outOfStock(); ?></strong></span><br>
-               <span>Total Stocks: <strong><?php echo totalStocks(); ?></strong></span><br>
-               <span>Total Users: <strong><?php echo numberOfMember(); ?></strong></span><br>
+          <div class="w3-col  w3-third">
+            <span>Out of Stock: <strong><?php echo outOfStock(); ?></strong></span><br>
+            <span>Total Stocks: <strong><?php echo totalStocks(); ?></strong></span><br>
+            <span>Total Users: <strong><?php echo numberOfMember(); ?></strong></span><br>
           </div>
-           
+
+        </div>
+
+        <div style="padding: 22px 0;">
+          <?php include 'includes/newProductModal.php'; ?>
+          <?php selectAllProduct(); ?>
         </div>
         
-        <div style="padding: 22px 0;">
-            <div class="w3-container w3-padding-32">
-             <?php include 'includes/productEditModal.php';?>
-                </div>   
-              <?php selectAllProduct(); ?>
-     
       </div>
       <!-- End of Page Content -->
     </div>
     <!-- End of Page Content Wrapper -->
-    </div></div>
+  </div>
   <!-- End of Wrapper -->
   <?php include 'footer.php'; ?>

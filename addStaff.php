@@ -13,7 +13,7 @@ idleKick();
 ?>
 <?php include 'header.php'; ?>
 
-<body id="page-top" cz-shortcut-listen="true" class="">
+<body cz-shortcut-listen="true">
   <!-- Main Content -->
   <div id="wrapper">
 

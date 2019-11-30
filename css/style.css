@@ -922,11 +922,11 @@ a {
 }
 
 footer{
-  color: white;
-  background-color: #002031;
-} 
-
-#home footer {
   color: #858796;
   background-color:white;
+} 
+
+#index footer {
+  color: white;
+  background-color: #002031;
 }

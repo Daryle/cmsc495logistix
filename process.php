@@ -2,10 +2,10 @@
 session_start();
 require_once('includes/functions.php');
 
-$update=false;
-$id =0;
-$name ="";
-$manu ="";
+$update = false;
+$id = 0;
+$name = "";
+$manu = "";
 $desc = "";
 $qty = "";
 
@@ -21,10 +21,6 @@ if(isset($_POST['save'])){
     insertProduct();    
 }
 
-if(isset($_POST['updatepic'])){
-    updateProfilePic();   
-}
-
 if(isset($_GET['delete'])){
     deleteProduct();
 }
@@ -34,7 +30,6 @@ if(isset($_POST['update'])){
 }
 
 if(isset($_GET['edit'])){
-    
     $mysqli = connectdb();
     $id = $_GET['edit'];
     
@@ -42,10 +37,11 @@ if(isset($_GET['edit'])){
     $result= $mysqli->query("SELECT * FROM products WHERE ID=$id") or die($mysqli->error());
     
     if(mysqli_num_rows($result)==1){
-    $row =$result->fetch_array();
-    $name =$row['PName'];
-    $manu =$row['PManu'];
-    $desc =$row['PDesc'];
-    $qty = $row['qty'];
-    $image = $row["PImage"];
-}}
+        $row =$result->fetch_array();
+        $name =$row['PName'];
+        $manu =$row['PManu'];
+        $desc =$row['PDesc'];
+        $qty = $row['qty'];
+        $image = $row["PImage"];
+    }
+}
