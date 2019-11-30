@@ -37,15 +37,15 @@ idleKick();
             </a>
             <a class="dropdown-item" href="#">
               <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-              Access level :<br>
+              Access level :
               <?php displayAccessLevel(); ?>
             </a>
             <hr style="margin: .25rem 1.5rem;">
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="updateProfile.php">
               <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
               Profile
             </a>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="changePassword.php">
               <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
               Settings
             </a>
