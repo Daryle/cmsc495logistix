@@ -321,7 +321,6 @@ function adminSidebar() // isAdminSideDisplay()
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
             <div class="collapse-inner rounded">
-                <!-- <h6 class="collapse-header">Custom Components:</h6> -->
                 <a class="collapse-item" href="inventory.php">Edit Inventory</a>
             </div>
             </div>
@@ -335,7 +334,6 @@ function adminSidebar() // isAdminSideDisplay()
             </a>
             <div id="collapseMA" class="collapse" aria-labelledby="headingMA" data-parent="#accordionSidebar" style="">
             <div class="collapse-inner rounded">
-                <!-- <h6 class="collapse-header">Custom Components:</h6> -->
                 <a class="collapse-item" href="addStaff.php">Add new account</a>
                 <a class="collapse-item" href="editMember.php">Edit acccount</a>
                 <a class="collapse-item" href="#">Aduit System</a>
@@ -351,7 +349,6 @@ function adminSidebar() // isAdminSideDisplay()
             </a>
             <div id="collapseAS" class="collapse" aria-labelledby="headingAS" data-parent="#accordionSidebar" style="">
             <div class="collapse-inner rounded">
-                <!-- <h6 class="collapse-header">Custom Components:</h6> -->
                 <a class="collapse-item" href="updateProfile.php">Profile</a>
                 <a class="collapse-item" href="changePassword.php">Change password</a>
             </div>
@@ -371,7 +368,7 @@ function adminSidebar() // isAdminSideDisplay()
 //display member sidenav
 function memberSidebar() // isMemberSideDisplay()
 { ?>
-    <!-- Admin Sidebar -->
+    <!-- Member Sidebar -->
     <ul class="sidebar navbar" id="accordionSidebar">
         <!-- Divider -->
         <hr class="sidebar-divider sidebar-top">
@@ -400,7 +397,6 @@ function memberSidebar() // isMemberSideDisplay()
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
             <div class="collapse-inner rounded">
-                <!-- <h6 class="collapse-header">Custom Components:</h6> -->
                 <a class="collapse-item" href="inventory.php">Edit Inventory</a>
             </div>
             </div>
@@ -414,7 +410,6 @@ function memberSidebar() // isMemberSideDisplay()
             </a>
             <div id="collapseAS" class="collapse" aria-labelledby="headingAS" data-parent="#accordionSidebar" style="">
             <div class="collapse-inner rounded">
-                <!-- <h6 class="collapse-header">Custom Components:</h6> -->
                 <a class="collapse-item" href="updateProfile.php">Profile</a>
                 <a class="collapse-item" href="changePassword.php">Change password</a>
             </div>
@@ -567,7 +562,7 @@ function selectAllProduct() {
             <td><?php echo $row['PName'];?></td>
             <td><?php echo $row['PDesc'];?></td>
             <td><?php echo $row['qty'];?></td>
-            <td><a href="addProduct.php?edit=<?php echo $row['ID'];?>"
+            <td><a href="editProduct.php?edit=<?php echo $row['ID'];?>"
                     class="w3-button logistixBlueBack">Edit</a>
             <?php 
             if (isAdmin()){ ?>                        
@@ -728,25 +723,30 @@ function insertProduct(){
     $image= mysqli_real_escape_string($mysqli, $image);
     
     if(countManu()==0){
-    $mysqli->query("INSERT INTO manufacturer (name) VALUES ('$manufacturer')");
+        $mysqli->query("INSERT INTO manufacturer (name) VALUES ('$manufacturer')");
 
-    if(preg_match("!image!", $_FILES['image']['type'])){
-       if(copy($_FILES['image']['tmp_name'], $image)){
+        if(preg_match("!image!", $_FILES['image']['type'])){
+            if(copy($_FILES['image']['tmp_name'], $image)){
 
-    $mysqli->query("INSERT INTO products (user_id, manu_id, PName, PManu,PDesc, qty, PImage, dateup) 
-        VALUES('selectUserId()','".mysqli_insert_id($mysqli)."','$name','$manufacturer','$desc','$qty','$image','$startTime')") or die($mysqli->error);
-    header("location: inventory.php");
-        }}}else{
+                $mysqli->query("INSERT INTO products (user_id, manu_id, PName, PManu,PDesc, qty, PImage, dateup) 
+                                VALUES('selectUserId()','".mysqli_insert_id($mysqli)."','$name','$manufacturer','$desc','$qty','$image','$startTime')") or die($mysqli->error);
+                header("location: inventory.php");
+            }
+        }
+    } else {
         $result = $mysqli->query("SELECT id from manufacturer WHERE name='$manufacturer'");
+
         while($row = $result->fetch_assoc()){
             $manu_id = $row['id'];
-            
-    $mysqli->query("INSERT INTO products (user_id, manu_id, PName, PManu,PDesc, qty, PImage, dateup) 
-        VALUES('$userId','$manu_id','$name','$manufacturer','$desc','$qty','$image','$startTime')") or die($mysqli->error);
-    header("location: inventory.php");
-    }}}
+                
+            $mysqli->query("INSERT INTO products (user_id, manu_id, PName, PManu,PDesc, qty, PImage, dateup) 
+                            VALUES('$userId','$manu_id','$name','$manufacturer','$desc','$qty','$image','$startTime')") or die($mysqli->error);
+            header("location: inventory.php");
+        }
+    }
+}
     
-    function countManu (){        
+function countManu (){        
     // Connect to the database
     $mysqli = connectdb();
 
@@ -756,19 +756,19 @@ function insertProduct(){
     $Myquery = "SELECT count(*) as count from manufacturer where name='$manufacturer'";
 
     if ($result = $mysqli->query($Myquery)) 
+    {
+        /* Fetch the results of the query */         
+        while( $row = $result->fetch_assoc() )
         {
-            /* Fetch the results of the query */         
-            while( $row = $result->fetch_assoc() )
-            {
-                $count = $row["count"]; 
-                echo $count;                                            
-            }    
-            /* Destroy the result set and free the memory used for it */
-            $result->close();         
-        }   
-            $mysqli->close();   
-            // return $count;
-            return $count;          
+            $count = $row["count"]; 
+            echo $count;                                            
+        }    
+        /* Destroy the result set and free the memory used for it */
+        $result->close();         
+    }   
+        $mysqli->close();   
+        // return $count;
+        return $count;          
 }
 
 //count item out of stock

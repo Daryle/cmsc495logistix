@@ -1,8 +1,6 @@
 <?php
-
-
 require_once('includes/functions.php');
-require_once ('process.php');
+require_once('process.php');
 
 session_start();
 ?>
