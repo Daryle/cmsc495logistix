@@ -608,7 +608,7 @@ function updateProducts() {
 
     $mysqli->query("UPDATE products SET PName='$name', PDesc='$desc', qty='$qty' WHERE ID=$id")or die($mysqli->error());
 
-    $_SESSION['message'] = "Record has been updated";
+    $_SESSION['updatemessage'] = "A record has been updated";
     $_SESSION['msg_type'] = "warning";
 
     header("location: inventory.php");        
@@ -702,7 +702,7 @@ function deleteProduct(){
     
     $mysqli->query("DELETE FROM products WHERE ID=$id") or die($mysqli->error());
 
-    $_SESSION['message'] = "Record has been delete";
+    $_SESSION['deletemessage'] = "A Record has been deleted";
     $_SESSION['msg_type'] = "danger";
 
     header("location: inventory.php");
@@ -730,6 +730,7 @@ function insertProduct(){
 
                 $mysqli->query("INSERT INTO products (user_id, manu_id, PName, PManu,PDesc, qty, PImage, dateup) 
                                 VALUES('selectUserId()','".mysqli_insert_id($mysqli)."','$name','$manufacturer','$desc','$qty','$image','$startTime')") or die($mysqli->error);
+
                 header("location: inventory.php");
             }
         }
@@ -741,6 +742,9 @@ function insertProduct(){
                 
             $mysqli->query("INSERT INTO products (user_id, manu_id, PName, PManu,PDesc, qty, PImage, dateup) 
                             VALUES('$userId','$manu_id','$name','$manufacturer','$desc','$qty','$image','$startTime')") or die($mysqli->error);
+                            
+                    $_SESSION['addmessage'] = "Success! A Record has been added";
+                    $_SESSION['msg_type'] = "danger";
             header("location: inventory.php");
         }
     }
@@ -787,6 +791,40 @@ function numberOfMember(){
         }   
             $mysqli->close();   
             return $count;             
+}
+
+
+function alarmCall(){
+    ?>
+                 <div class="w3-container">
+      <?php if(isset($_SESSION['addmessage'])): ?>
+    <div class="w3-alert w3-green w3-padding alert-<?=$_SESSION['msg_type']?>">   
+    <?php
+    echo $_SESSION['addmessage'];
+    unset($_SESSION['addmessage']);
+    ?>      
+            <?php    endif ?>
+   <?php if(isset($_SESSION['updatemessage'])): ?>
+    <div class="w3-alert logistixOrangeBack w3-padding alert-<?=$_SESSION['msg_type']?>">
+    
+    <?php
+    echo $_SESSION['updatemessage'];
+    unset($_SESSION['updatemessage']);
+    ?>
+          <?php    endif ?>
+    <?php if(isset($_SESSION['deletemessage'])): ?>
+    <div class="w3-alert w3-red w3-padding alert-<?=$_SESSION['msg_type']?>">
+    
+    <?php
+    echo $_SESSION['deletemessage'];
+    unset($_SESSION['deletemessage']);
+    ?>
+        <?php    endif ?>
+        
+    </div></div>
+    
+    
+    <?php
 }
 /*** end of product management functions **/
 ?>
