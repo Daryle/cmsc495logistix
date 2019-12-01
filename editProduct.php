@@ -27,7 +27,7 @@ idleKick();
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="user-greetings">Good Day,</span>
             <span class="user-name"><?php echo $_SESSION['uname']; ?></span>
-            <img class="user-topbar-img" src="" alt="">
+            <img class="user-topbar-img" src="<?php showProfilePic();  ?>" alt="">
           </a>
           <!-- Dropdown Menu -->
           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -79,7 +79,7 @@ idleKick();
           <div class="w3-row-padding" style="margin:0 -16px">
             <div class="w3-third">
               <h5><?php echo $name; ?></h5>
-              <img src="<?php echo $image; ?>" style="width:100%" alt="Google Regional Map">
+              <img src="<?php echo $image; ?>" style="width:100%" alt="Image">
             </div>
             <div class="w3-twothird">
               <h5>Edit Product</h5>

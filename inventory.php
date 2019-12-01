@@ -77,6 +77,9 @@ idleKick();
 
         <div style="padding: 22px 0;">
           <?php include 'includes/newProductModal.php'; ?>
+            
+          <?php alarmCall(); ?>  
+          
           <?php selectAllProduct(); ?>
         </div>
         
