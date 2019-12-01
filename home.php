@@ -6,6 +6,8 @@ if (!isset($_SESSION['uname'])) {
   echo "<script>window.open('index.php','_self')</script>";
 } else { }
 initAdmin();
+$dateTime = date("y-m-d h:i a");
+$_SESSION['dateTime'] = $dateTime;
 idleKick();
 ?>
 <?php include 'header.php'; ?>
