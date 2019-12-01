@@ -608,7 +608,7 @@ function updateProducts() {
 
     $mysqli->query("UPDATE products SET PName='$name', PDesc='$desc', qty='$qty' WHERE ID=$id")or die($mysqli->error());
 
-    $_SESSION['updatemessage'] = "A record has been updated";
+    $_SESSION['updatemessage'] = "Success! a record has been updated";
     $_SESSION['msg_type'] = "warning";
 
     header("location: inventory.php");        
@@ -702,7 +702,7 @@ function deleteProduct(){
     
     $mysqli->query("DELETE FROM products WHERE ID=$id") or die($mysqli->error());
 
-    $_SESSION['deletemessage'] = "A Record has been deleted";
+    $_SESSION['deletemessage'] = "Success! a record has been deleted";
     $_SESSION['msg_type'] = "danger";
 
     header("location: inventory.php");
