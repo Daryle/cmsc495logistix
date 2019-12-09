@@ -537,6 +537,10 @@ a {
   align-items: center;
   display: flex;
 }
+.topbar .toggle {
+  align-items: center;
+  display: flex;
+}
 .topbar .dropdown {
   position: relative;
   margin: 0 1rem 0 auto;
@@ -610,6 +614,9 @@ a {
 
 /**/
 @media (min-width:768px) {
+  .d-md-none {
+    display: none!important;
+  }
   .topbar .brand {
     width: 18rem;
   }
@@ -725,8 +732,18 @@ a {
 }
 
 @media (max-width:768px) {
-  .topbar .brand {
+  .topbar .toggle {
     width: 6.5rem;
+  }
+  .topbar .brand {
+    margin: 0 auto;
+  }
+  .topbar .dropdown {
+    width: 5.5rem;
+    margin: 0 1rem 0 0;
+  }
+  .user-greetings, .user-name {
+    display:none;
   }
   .index-content {
     padding: 0 20px;
@@ -820,6 +837,25 @@ a {
   z-index: 1;
 }
 
+.topbar-toggle {
+  margin: 0 auto;
+
+}
+
+.topbar-toggle:active {
+  background-color: #dddfeb;
+}
+
+.topbar-toggle:hover {
+  background-color: #eaecf4;
+}
+
+.topbar-toggle.focus, .topbar-toggle:focus {
+    text-decoration: underline;
+    box-shadow: none;
+    outline: 0;
+}
+
 .topbar #sidebarToggleTop {
   height: 2.5rem;
   width: 2.5rem;
@@ -857,7 +893,7 @@ a {
 .user-name {
   color: #858796!important;
   margin: 0 0.5rem;
-  display: inline!important;
+  /* display: inline!important; */
 }
 .dropdown-toggle {
   white-space: nowrap;

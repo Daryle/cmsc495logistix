@@ -1,6 +1,6 @@
 !function(t) {
     "use strict";
-    t("#sidebarToggle, #sidebarToggleTop").on("click", function (o) {
+    t("#sidebarToggle, #topbarToggleTop").on("click", function (o) {
         t("body").toggleClass("sidebar-toggled"), 
         t(".sidebar").toggleClass("toggled"), 
         t(".sidebar").hasClass("toggled") && 

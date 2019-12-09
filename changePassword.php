@@ -16,6 +16,12 @@ idleKick();
     <!-- Topbar -->
     <nav class="navbar-top topbar">
       <ul class="navbar navbar-user">
+        <!-- Topbar Toggle (Topbar) -->
+        <li class="nav-item toggle d-md-none">
+          <button id="topbarToggleTop" class="topbar-toggle rounded-circle">
+            <i class="fa fa-bars"></i>
+          </button>
+        </li>
         <!-- Nav Item - Brand Logo -->
         <li class="nav-item brand">
           <a class="sidebar-logo" href="home.php"><img class="navbar-brand-img sidebar-logo" src="./images/logistix_navbar_logo.png" alt="Logistix Logo"></a>
@@ -37,15 +43,15 @@ idleKick();
             </a>
             <a class="dropdown-item" href="#">
               <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-              Access level :<br>
+              Access level :
               <?php displayAccessLevel(); ?>
             </a>
             <hr style="margin: .25rem 1.5rem;">
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="updateProfile.php">
               <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
               Profile
             </a>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="changePassword.php">
               <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
               Settings
             </a>
