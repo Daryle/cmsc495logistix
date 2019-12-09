@@ -17,6 +17,12 @@ idleKick();
     <!-- Topbar -->
     <nav class="navbar-top topbar">
       <ul class="navbar navbar-user">
+        <!-- Topbar Toggle (Topbar) -->
+        <li class="nav-item toggle d-md-none">
+          <button id="topbarToggleTop" class="topbar-toggle rounded-circle">
+            <i class="fa fa-bars"></i>
+          </button>
+        </li>
         <!-- Nav Item - Brand Logo -->
         <li class="nav-item brand">
           <a class="sidebar-logo" href="home.php"><img class="navbar-brand-img sidebar-logo" src="./images/logistix_navbar_logo.png" alt="Logistix Logo"></a>
@@ -27,7 +33,7 @@ idleKick();
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="user-greetings">Good Day,</span>
             <span class="user-name"><?php echo $_SESSION['uname']; ?></span>
-            <img class="user-topbar-img" src="<?php echo showProfilePic();?>" alt="">
+            <img class="user-topbar-img" src="<?php echo showProfilePic(); ?>" alt="">
           </a>
           <!-- Dropdown Menu -->
           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -87,7 +93,7 @@ idleKick();
         <div style="padding: 22px 0;">
           <?php limitShow(); ?>
         </div>
-        
+
       </div>
       <!-- End of Page Content -->
     </div>
